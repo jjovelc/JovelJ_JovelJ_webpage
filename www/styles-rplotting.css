@@ -1,9 +1,87 @@
-/* Global font setting */
-* {
-  font-family: Arial, sans-serif;
+/* For mobile deployment enhancement */
+/* Styles for screens smaller than 768px (typical mobile devices) */
+@media (max-width: 768px) {
+  .banner {
+    height: 300px; /* Adjust banner height for mobile */
+  }
+
+  .description {
+    font-size: 1.5em; /* Adjust font size for mobile */
+    margin: 50px 0 0 0;
+  }
+
+  .main-paragraph {
+    width: 90%; /* Make paragraph width responsive */
+    margin-left: 5%; /* Center the paragraph */
+    font-size: 16px; /* Adjust font size for mobile */
+  }
+
+  .contact-format {
+    margin: 0 1cm; /* Adjust margins for mobile */
+  }
+
+  .youtube-btn, .github-button, .ucvm_page-btn {
+    position: static; /* Stack buttons vertically */
+    margin: 10px auto; /* Center buttons */
+    display: block;
+  }
+
+  .grid-container {
+    grid-template-columns: 1fr; /* Single column layout for mobile */
+  }
+
+  .quote-box, .quote-box-illustrator {
+    max-width: 100%; /* Full width for mobile */
+    margin: 10px 0; /* Adjust margins */
+  }
+
+  .quote-container {
+    flex-direction: column; /* Stack boxes vertically */
+    align-items: center; /* Center boxes */
+  }
+
+  .quote-box-content, .quote-box-support {
+    position: static; /* Stack boxes vertically */
+    width: 90%; /* Full width for mobile */
+    margin: 10px auto; /* Center boxes */
+  }
 }
 
-/* Preserve the original header styling */
+/* Styles for screens smaller than 480px (very small mobile devices) */
+@media (max-width: 480px) {
+  .banner {
+    height: 200px; /* Further adjust banner height */
+  }
+
+  .description {
+    font-size: 1.2em; /* Further adjust font size */
+  }
+
+  .main-paragraph {
+    font-size: 14px; /* Further adjust font size */
+  }
+
+  .contact-format {
+    margin: 0 0.5cm; /* Further adjust margins */
+  }
+}
+
+/* Ends mobile deploment enhacement code */
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  
+}
+
+.subtitle-yellow{
+  color: rgb(220, 246, 70);
+  text-align: center;
+  margin-top: 10px;
+  font-size: 20px; /* Increase the font size here */
+}
+
 .header {
   position: fixed;
   width: 100%;
@@ -30,158 +108,1033 @@
   text-decoration: overline;
 }
 
-/* Top image */
-.top-image {
-  width: 100%;
+.main {
+  margin-top: 70px;
+}
+
+.banner {
+  position: relative;
+  background-image: url('../images/banner_2_man.png'); 
+  background-size: cover;
+  background-position: center;
+  height: 700px;
+  color: white;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
   text-align: center;
-  margin-bottom: 30px;
+  flex-direction: column;
 }
 
-.top-image img {
-  width: 100%;
-  height: auto;
+.description {
+  font-size: 2.0em;
+  margin: 100px 0 0 0;
+  color: white; /* Change the color here */
 }
 
-/* Main content area */
+.subtitle-blue {
+  font-size: 24px;
+  margin-top: 30px;
+  padding: 20px;
+  color: #1d5ec5; /* Change the color here */
+}
+
 .main-paragraph {
   background-color: white;
   margin-left: 100px;
   width: 750px;
-  text-align: justify;
+  text-align:justify;
   margin-top: 10px;
-  font-size: 18px;
-  color: black;
+  font-size: 18px; /* Increase the font size here */
+  color: black; /* Change the color here */
 }
 
-/* Right-side boxes - Fixed positioning */
-.quote-box-support-illustrator {
+.contact-format {
+  margin-top: 10px;
+  font-size: 1.2em; /* Increase the font size here */
+  margin: 0 5cm; 
+  color: white;
+}
+
+.youtube-btn {
+  position: absolute;
+  top: 20px; 
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  background-color: #464444;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 15px;
+  border-color: red;
+  border-style:double;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.youtube-btn:hover, .ucvm_page-btn:hover {
+  background-color: white;
+  color: black;
+  border-color: red;
+  border-bottom-width: 5px;
+  border-style:double;
+}
+
+.youtube-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.youtube-logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.github-button {
+  position: absolute;
+  top: 80px; 
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  background-color: #464444;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 15px;
+  border-color: red;
+  border-style:double;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.github-button:hover {
+  background-color: white;
+  color: black;
+  border-color: red;
+  border-style:double;
+  border-bottom-width: 5px;
+}
+
+.github-logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+
+.ucvm_page-btn {
+  position: absolute;
+  top: 140px; 
+  right: 20px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  background-color: #464444;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 15px;
+  border-color: red;
+  border-style:double;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.ucvm_page-btn:hover {
+  background-color: white;
+  color: black;
+  border-color: red;
+  border-style:double;
+  border-bottom-width: 5px;
+}
+
+.ucvm_page-logo {
+  width: 24px;
+  height: 24px;
+
+  margin-right: 10px;
+}
+
+.mouse_scroll {
+  display: block;
+  margin: 0 auto;
+  width: 20px;
+  height: 75px;
+  margin-top: 50px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+@keyframes scroll {
+  0% {
+      opacity: 1;
+      top: 3px;
+  }
+  100% {
+      opacity: 0;
+      top: 9px;
+  }
+}
+
+.m_scroll_arrows {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-right: 4px solid white;
+  border-bottom: 4px solid white;
+  margin: 0.125px auto;
+  transform: rotate(45deg);
+  animation: move 1.5s infinite;
+}
+
+.unu {
+  animation-delay: 0s;
+}
+
+.doi {
+  animation-delay: 0.15s;
+}
+
+.trei {
+  animation-delay: 0.3s;
+}
+
+@keyframes move {
+  0% {
+      opacity: 0;
+      transform: rotate(45deg) translate(0, 0);
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+      transform: rotate(45deg) translate(0, 8px);
+  }
+}
+
+/* Style for grid in the main page */
+/* Grid styles */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+  
+  */
+  gap: 20px; /* Space between items */
+  margin-top: 50px; /* Add top margin if the scroll arrow is pushing content down */
+  margin-left: 10px;
+}
+
+.grid-item {
+  margin-left: 20px;
+  background-color: white;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.thumbnail img {
+  margin-left: 30px;
+  width: 750px; 
+  height: 100px;
+  max-width: 150px; /* Control the max size of the image */
+  border-radius: 8px; /* Optional styling */
+  object-fit: cover; /* Crop the image if necessary to fit the aspect ratio */
+}
+
+.thumbnail-title h3 {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 50;
+}
+
+/* Scroll Arrow styles */
+.mouse_scroll {
+  cursor: pointer;
+  text-align: center;
+  margin-top: 20px;
+  position: absolute; /* This keeps it from affecting other layout elements */
+  bottom: 20px; /* Adjust based on your design */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999; /* Make sure it's on top */
+}
+
+.mouse {
+  width: 25px;
+  height: 45px;
+  border-radius: 15px;
+  border: 2px solid #fff; /* Keep the mouse border white */
+  margin: 0 auto;
+  position: relative;
+}
+
+.wheel {
+  width: 5px;
+  height: 10px;
+  background-color: #fff; /* Wheel white */
+  border-radius: 2px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.m_scroll_arrows {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border: solid #fff; /* Arrows white */
+  border-width: 0 2px 2px 0;
+  margin: 2px auto;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%); /* Center the arrows horizontally */
+}
+.unu {
+  transform: rotate(45deg);
+}
+
+.doi {
+  transform: rotate(45deg);
+}
+
+.trei {
+
+  transform: rotate(45deg);
+}
+
+/* Style for the banner container */
+.announcement-banner {
+  width: 100%;
+  background-color: lightskyblue;
+  padding: 10px 10px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid grey;
+  display: flex;
+  align-items: center; /* This will vertically center the content */
+}
+
+.announcement-text {
+  color: black;
+  font-size: 28px;
+  display: inline-block;
+  white-space: nowrap;
+  animation: scroll-left 60s linear infinite;
+  margin: 0; /* Reset margin */
+  padding: 0; /* Reset padding */
+}
+
+
+/* Animation to scroll text from right to left */
+@keyframes scroll-left {
+  0% {
+      transform: translateX(100%);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+.separator-container {
+  text-align: center;
+  position: relative;
+  margin: 20px 0; /* Adjusts spacing around the separator */
+}
+
+.year-text {
+  font-size: 28px;
+  background-color: white; /* Matches the background of your page to avoid overlapping */
+  padding: 0 100px;
+  position: relative;
+  top: 20px; /* Adjusts the position of the year above the separator */
+  z-index: 1;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+hr.rounded {
+ 
+  border-top: 3px solid darkgrey;
+  border-radius: 5px;
+  margin-top: 30px;
+  margin-bottom: 0;
+}
+
+/* Classes for the contact tab */
+.spacer {
+  margin-bottom: 1em; /* Adjust the value as needed */
+}
+
+.email-container {
+
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Adds spacing between form fields */
+}
+
+.button-group {
+  display: flex;
+  justify-content: flex-start; /* Align buttons to the left */
+  gap: 10px; /* Space between the buttons */
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%; /* Ensure the input and textarea take full width */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.contact-form textarea {
+  height: 200px; /* Ensure the textarea has a good height */
+  resize: vertical; /* Allow vertical resizing, if needed */
+}
+
+.contact-form button {
+  background-color: rgb(2, 110, 218);
+  color:white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100px;
+}
+
+.contact-form button:hover {
+  background-color: #333;
+}
+
+h3 {
+  color: lightgray;
+  margin: 0 0 20px 0;
+  text-align: center;
+}
+
+.status {
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.success {
+  color: #27ae60;
+}
+
+.error {
+  color: #c0392b;
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  margin: 10px auto;
+}
+
+/* Style for the smaller Clear button */
+.clear-button {
+  width: 100px;
+  background-color: gray;
+  padding: 10px;  /* Smaller padding */
+  font-size: 14px;  /* Smaller font size */
+  margin-left: 10px; /* Adds some spacing between the buttons */
+}
+
+.clear-button:hover {
+  background-color: gray;
+  color: white;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#stars, #stars2, #stars3, #stars4 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: transparent;
+}
+
+#stars {
+  width: 3px;
+  height: 3px;
+  box-shadow: 2000px 4000px #FFF, 500px 1000px #FFF, 1500px 500px #FFF, 200px 1500px #FFF, 800px 1200px #FFF;
+  animation: animStar 25s linear infinite;
+}
+
+#stars2 {
+  width: 3px;
+  height: 3px;
+  box-shadow: 2000px 2000px yellow, 1000px 1000px yellow, 3000px 500px yellow, 400px 1500px yellow, 1600px 1200px yellow;
+  animation: animStar 30s linear infinite;
+}
+
+#stars3 {
+  width: 3px;
+  height: 3px;
+  box-shadow: 3000px 2000px magenta, 1500px 1000px magenta, 4500px 500px magenta, 600px 1500px magenta, 2400px 1200px magenta;
+  animation: animStar 35s linear infinite;
+}
+
+#stars4 {
+  width: 3px;
+  height: 3px;
+  box-shadow: 2500px 2000px rgb(78, 193, 239), 2000px 1000px rgb(78, 193, 239), 6000px 500px rgb(78, 193, 239), 800px 1500px rgb(78, 193, 239), 2400px 1200px rgb(78, 193, 239);
+  animation: animStar 40s linear infinite;
+}
+
+@keyframes animStar {
+  from {
+      transform: translateY(0px);
+  }
+  to {
+      transform: translateY(-2000px);
+  }
+}
+
+/* styles (classes) for the publications tab */
+.publications {
+  padding: 20px;
+  margin: 20px 5cm;
+  color: grey;
+}
+.section-title {
+  margin-bottom: 10px;
+  color: rgb(9, 56, 157);
+  text-align: center;
+  font-size: 24px;
+}
+
+.pdf-pub-button {
+  padding: 10px 15px;
+  background-color: lightgray;
+  color: black;
+  font-size: 18px;
+  border: black;
+  border-radius: 15px;
+  border-style: double;
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: 200px;
+  height: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.pdf-pub-button:hover {
+  background-color: gray;
+  color: white;
+  border-color: red;
+  border-radius: 15px;
+}  
+  /* Set button dimensions */
+  width: 200px; /* Set a specific width */
+  height: 50px; /* Set a specific height */
+
+  /* Center the button horizontally */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+  /* Optional: Text alignment */
+  text-align: center;
+}
+
+.pdf-pub-button:hover {
+  background-color:gray;
+  color: white;
+  border-color: red;
+  border-radius: 15px;
+
+}
+
+/* Blogs classes */
+.blog-thumbnail{
+  width: 300px;
+  height: 200px;
+  display: block;
+}
+
+.blog-title{
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-bottom: 12px;
+}
+
+/* Blog replicates classes */
+.banner-replicates {
+  position: relative;
+  background-image: url('../images/replicates.png'); /* Ensure this image is in the correct directory */
+  background-size: contain; /* Adjust this as necessary */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-position: center; /* Center the image */
+  height: 200px; /* Adjust the height as needed */
+  width: 100%; /* Set the width to 100% */
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+/* Classes for software tab */
+/* Style the accordion */
+.software-grid{
+  /* Create a two-column grid layout */
+  display: grid;
+  grid-template-columns: 300px 300px; /* Two equal columns */
+  gap: 20px; /* Add space between columns */
+  padding-left: 20px;
+  
+}
+.software-accordion {
+  background-color: rgb(30, 118, 186);
+  color: #fbfafa;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 20px;
+  transition: 0.4s;
+  border: 1px solid black;
+  margin-bottom: 5px;
+}
+
+/* Add a background color to the active button (accordion) */
+.software-accordion:hover {
+  background-color: rgb(151, 149, 150);
+}
+
+/* Style the accordion panel to be hidden by default */
+.sotfware-accordion-panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  border-left: 1px solid #ccc; /* Left border for the panel */
+  border-right: 1px solid #ccc; /* Right border for the panel */
+  border-bottom: 1px solid #ccc; /* Bottom border for the panel */
+  margin-bottom: 10px; /* Optional: Adds space below each expanded panel */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 5px 0;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #0066cc;
+}
+
+ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Styles for slide show in scRNAseq show */
+#slideshow {
+  width: 100%;
+  text-align: center;
+}
+
+#slideshow-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover; /* This ensures the image covers the area without distortion */
+}
+
+#slideshow-image {
+  width: 250px;
+  height: 250px;
+  object-fit: cover; /* This ensures the image covers the area without distortion */
+}
+
+
+.cell-background{
+  background-image: url('../workshops/scRNAseq/images_scRNAseq_course/multicolor_cells.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.cell-background::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.white-rectangle-scRNAseq {
+  background-color: white;
+  overflow: auto;
+  width: 90%;
+  height: 100%;
+  margin: 0 auto; 
+  padding: 20px; 
+  z-index: 10; 
+  position: relative; 
+  opacity: 0.95;
+  
+}
+
+.top-image{
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+
+.bullet{
+  color: #454647;
+  background-color: white;
+  margin-left: 125px;
+  width: 750px;
+  text-align:justify;
+  font-size: 20px; /* Increase the font size here */
+  
+}
+
+.bullet-level2{
+  background-color: white;
+  margin-left: 150px;
+  width: 750px;
+  text-align:justify;
+  font-size: 18px; /* Increase the font size here */
+  color: black; /* Change the color here */
+}
+
+/* Flex container for the three boxes */
+.quote-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px;
+  max-width: 1380px;
+  margin: 0 auto; /* Center the container */
+  gap: 10px;
+}
+
+.quote-box-illustrator {
+  background-color: white;
+  padding: 10px;
+  flex: 1;
+  height: 50px;
+  max-width: 30%;
+  text-align: center;
+  position: relative;
+  border-color: forestgreen;
+  transition: all 0.4s ease; /* Transition for hover effects */
+  border-radius: 15px;
+  box-shadow: inset 0 0 35px black;
+}
+
+/* Common styles for all boxes */
+.quote-box {
+  background-color: white;
+  padding: 10px;
+  flex: 1;
+  height: 210px;
+  max-width: 30%;
+  text-align: center;
+  position: relative;
+  border-color: gray;
+  transition: all 0.4s ease; /* Transition for hover effects */
+  border-radius: 15px;
+  box-shadow: inset 0 0 35px black;
+}
+
+/* Left box: taller on the left */
+.left {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.left:hover {
+  transform: scale(1.05); /* Slightly increases in size */
+}
+
+/* Right box */
+.right {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.right:hover {
+  transform: scale(1.05); /* Slightly increases in size */
+}
+
+.center {
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+/* Center box: grows a bit when hovered */
+.center:hover {
+  transform: scale(1.05); /* Slightly increases in size */
+}
+
+/* Styling for all logos */
+.quote-logo, .profile-image {
+  margin-top: -10px; /* Adjust the value as needed */
+  display: block;
+  width: 100px; 
+  height: auto; 
+}
+
+/* Hover effect with shadow going away */
+.quote-box:hover {
+  box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3); */
+}
+
+.register-button {
+  width: 100px;
+  height: 30px;
+  display: inline-block;
+  background-color: darkred; /* Red background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding around the text */
+  line-height: 1.5em; 
+  text-decoration: none; /* Remove underline from the link */
+  font-size: 20px; /* Font size */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  margin-top: 20px; /* Adds space between the text and the button */
+}
+
+.register-button:hover {
+  background-color: firebrick; /* Darker red when hovered */
+}
+
+#container {
+  position: relative;
+}
+
+/* Content box */
+.quote-box-content {
   position: absolute;
   right: 20px;
-  top: 250px;  /* Adjusted to be right after the top image */
+  top: 30px;
   background-color: white;
-  padding: 20px;
+  padding: 10px;
   width: 30%;
-  min-height: 170px;
+  height: 90px; 
   text-align: center;
   border: 1px solid gray;
   border-radius: 15px;
 }
 
+/* Support box */
+.quote-box-support {
+  position: absolute;
+  right: 20px;
+  top: calc(10px + 150px + 10px); /* Adjust based on content box height */
+  background-color: white;
+  padding: 10px;
+  width: 30%;
+  height: 180px; /* Set the height as needed */
+  text-align: center;
+  border: 1px solid gray;
+  border-radius: 15px;
+}
+
+/* Support box illustrator */
+.quote-box-support-illustrator,
 .quote-box-content-illustrator {
   position: absolute;
   right: 20px;
-  top: 470px;  /* Positioned below the support box with proper spacing */
+  width: 30%; /* Ensures both have the same width */
   background-color: white;
-  padding: 20px;
-  width: 30%;
   text-align: center;
-  border: 1px solid forestgreen;
+  border: 1px solid gray; /* Same border style (update forestgreen if needed) */
+  border-radius: 15px; /* Match border radius for consistency */
+  box-sizing: border-box; /* Include padding and border in the width */
+}
+
+/* Specific styles for support box */
+.quote-box-support-illustrator {
+  top: calc(10px + 420px + 10px); /* Specific positioning */
+  padding: 10px;
+  height: 240px; /* Fixed height */
+}
+
+/* Specific styles for content box */
+.quote-box-content-illustrator {
+  top: 530px; /* Specific positioning */
+  padding: 10px; /* Match padding for consistent width */
+  border: 1px solid forestgreen; /* Unique border */
+}
+
+.quote-box-content,
+.quote-box-support {
+  z-index: 100; /* Adjust as needed */
+}
+
+.watch-video-button {
+  width: 110px;
+  height: 30px;
+  display: inline-block;
+  background-color:dodgerblue; /* Red background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding around the text */
+  line-height: 1.5em; 
+  text-decoration: none; /* Remove underline from the link */
+  font-size: 20px; /* Font size */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  margin-top: 20px; /* Adds space between the text and the button */
+}
+
+.watch-video-button:hover {
+  background-color: olivedrab; /* Darker red when hovered */
+}
+
+.register-button-illustrator {
+  width: 150px;
+  height: 60px;
+  display: inline-block;
+  background-color: #D2691E; /* Red background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding around the text */
+  line-height: 1.5em; 
+  text-decoration: none; /* Remove underline from the link */
+  font-size: 20px; /* Font size */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  margin-top: 20px; /* Adds space between the text and the button */
+}
+
+.register-button-illustrator:hover {
+  background-color:RosyBrown; /* Darker red when hovered */
+}
+
+.download-content-button-illustrator {
+  width: 150px;
+  height: 60px;
+  display: inline-block;
+  background-color:#D2691E; /* Red background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding around the text */
+  line-height: 1.5em; 
+  text-decoration: none; /* Remove underline from the link */
+  font-size: 20px; /* Font size */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  margin-top: 20px; /* Adds space between the text and the button */
+}
+
+.download-content-button-illustrator:hover {
+  background-color: RosyBrown; /* Darker red when hovered */
+}
+
+.download-slides-button {
+  width: 200px;
+  height: 30px;
+  display: inline-block;
+  background-color:dodgerblue; /* Red background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding around the text */
+  line-height: 1.5em; 
+  text-decoration: none; /* Remove underline from the link */
+  font-size: 20px; /* Font size */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  margin-top: 20px; /* Adds space between the text and the button */
+}
+
+.download-slides-button:hover {
+  background-color: olivedrab; /* Darker red when hovered */
+}
+
+.quote-box-content {
+  position: absolute;
+  right: 20px; 
+  top: 0%;   
+  background-color: white;
+  padding: 10px;
+  width: 30%;  
+  text-align: center;
+  border: 1px solid gray;
   border-radius: 10px;
 }
 
-/* Buttons */
-.register-button-illustrator,
-.download-content-button-illustrator {
-  width: 110px;
-  height: 50px;
+.content-button {
+  width: 200px;
+  height: 30px;
   display: inline-block;
-  background-color: #117a65;
-  color: white;
-  padding: 10px 20px;
-  line-height: 1.5em;
-  text-decoration: none;
-  font-size: 20px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  margin-top: 20px;
+  background-color: dodgerblue; /* Red background */
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding around the text */
+  line-height: 1.5em; 
+  text-decoration: none; /* Remove underline from the link */
+  font-size: 20px; /* Font size */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  margin-top: 20px; /* Adds space between the text and the button */
 }
 
-.register-button-illustrator:hover,
-.download-content-button-illustrator:hover {
-  background-color: forestgreen;
+
+.content-button:hover {
+  background-color: gray; /* Darker red when hovered */
 }
 
-.download-content-button-illustrator {
-  width: 210px;
+.quote-box-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* Aligns items to the right */
+  margin-right: 20px; /* Optional: to match individual box margins */
 }
 
-/* Course title and content */
-h1 {
-  color: forestgreen;
-  font-size: 32px;
-  margin-left: 50px;
-  font-family: Arial, sans-serif;
+.quote-box-content {
+  margin-top: 50px; 
 }
 
-.section-title {
-  color: firebrick;
-  font-weight: bold;
-  margin-left: 100px;
-  font-size: 20px;
-}
-
-/* Course information text */
-.schedule-date {
-  color: #0b5345;
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.schedule-time {
-  color: #0b5345;
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.schedule-location {
-  color: #0b5345;
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.schedule-cost {
-  color: orangered;
-  font-size: 24px;
-  margin-top: 10px;
-}
-
-/* Mobile responsiveness */
-@media screen and (max-width: 768px) {
-  .nav {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .nav a {
-      margin: 5px 0;
-  }
-
-  .main-paragraph {
-      margin-left: 20px;
-      width: calc(100% - 40px);
-  }
-
-  .quote-box-support-illustrator,
-  .quote-box-content-illustrator {
-      position: static;
-      width: calc(100% - 40px);
-      margin: 20px auto;
-      height: auto;
-  }
-
-  .register-button-illustrator,
-  .download-content-button-illustrator {
-      width: 100%;
-      max-width: 300px;
-      margin: 10px auto;
-  }
-
-  h1 {
-      margin-left: 20px;
-      font-size: 24px;
-  }
-
-  .section-title {
-      margin-left: 20px;
-  }
+.quote-box-content-illustrator {
+  margin-top: 100px; 
 }
