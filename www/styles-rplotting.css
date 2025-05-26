@@ -432,7 +432,7 @@ body, html {
   font-size: 28px;
   display: inline-block;
   white-space: nowrap;
-  animation: scroll-left 60s linear infinite;
+  animation: scroll-left 10s linear infinite;
   margin: 0; /* Reset margin */
   padding: 0; /* Reset padding */
 }
