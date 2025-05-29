@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPC Tutorial: NGS FASTQ Analysis on Rocky Linux</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+        h4 {
+            color: #7f8c8d;
+            margin-top: 25px;
+        }
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            border-left: 4px solid #e74c3c;
+        }
+        code {
+            background-color: #ecf0f1;
+            color: #e74c3c;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        .toc {
+            background-color: #f1f2f6;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .toc li {
+            margin: 8px 0;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #2980b9;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        .toc a:hover {
+            background-color: #3498db;
+            color: white;
+        }
+        .warning {
+            background-color: #ffeaa7;
+            border: 1px solid #fdcb6e;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .tip {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 50%;
+            text-decoration: none;
+            display: none;
+        }
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; }
+            .back-to-top { display: none; }
+            pre { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HPC Tutorial: NGS FASTQ Analysis on Rocky Linux</h1>
+        <p><em>A comprehensive guide for bioinformaticians to effectively use High Performance Computing clusters for Next-Generation Sequencing data analysis.</em></p>
+
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <ul>
+                <li><a href="#introduction">1. Introduction to HPC</a></li>
+                <li><a href="#getting-started">2. Getting Started</a></li>
+                <li><a href="#file-system">3. File System Navigation</a></li>
+                <li><a href="#slurm">4. Job Scheduling with SLURM</a></li>
+                <li><a href="#environment">5. Environment Management</a></li>
+                <li><a href="#workflows">6. FASTQ File Analysis Workflows</a></li>
+                <li><a href="#data-transfer">7. Data Transfer</a></li>
+                <li><a href="#best-practices">8. Best Practices</a></li>
+                <li><a href="#troubleshooting">9. Troubleshooting</a></li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h2 id="introduction">Introduction to HPC</h2>
+
+        <h3>What is an HPC Cluster?</h3>
+        <p>A High Performance Computing (HPC) cluster is a collection of interconnected computers (nodes) that work together to perform computationally intensive tasks. For NGS analysis, HPCs provide:</p>
+        <ul>
+            <li><strong>High computational power</strong>: Multiple CPU cores and large memory</li>
+            <li><strong>Parallel processing</strong>: Run multiple jobs simultaneously</li>
+            <li><strong>Large storage</strong>: Petabytes of data storage</li>
+            <li><strong>Specialized software</strong>: Pre-installed bioinformatics tools</li>
+        </ul>
+
+        <h3>Rocky Linux Overview</h3>
+        <p>Rocky Linux is an enterprise-grade Linux distribution, similar to CentOS, commonly used in HPC environments due to its:</p>
+        <ul>
+            <li>Stability and reliability</li>
+            <li>Long-term support</li>
+            <li>Enterprise security features</li>
+            <li>Compatibility with scientific computing software</li>
+        </ul>
+
+        <h2 id="getting-started">Getting Started</h2>
+
+        <h3>1. Connecting to the HPC</h3>
+
+        <h4>SSH Connection</h4>
+        <pre><code># Basic connection
+ssh username@hpc-cluster.institution.edu
+
+# With X11 forwarding for GUI applications
+ssh -X username@hpc-cluster.institution.edu
+
+# Using SSH keys (recommended)
+ssh -i ~/.ssh/id_rsa username@hpc-cluster.institution.edu</code></pre>
+
+        <h4>First Login Setup</h4>
+        <pre><code># Check your home directory quota
+quota -u $USER
+
+# View cluster information
+sinfo
+
+# Check available modules
+module avail</code></pre>
+
+        <h3>2. Basic Rocky Linux Commands</h3>
+
+        <h4>File Operations</h4>
+        <pre><code># List files with details
+ls -la
+
+# Check disk usage
+du -sh *
+
+# Find files
+find /path -name "*.fastq.gz"
+
+# Count files
+find /path -name "*.fastq" | wc -l</code></pre>
+
+        <h4>System Information</h4>
+        <pre><code># Check system resources
+top
+htop  # if available
+
+# Memory usage
+free -h
+
+# CPU information
+lscpu
+
+# Storage information
+df -h</code></pre>
+
+        <h2 id="file-system">File System Navigation</h2>
+
+        <h3>Typical HPC Directory Structure</h3>
+        <pre><code>/home/username/          # Home directory (limited space)
+/scratch/username/       # Temporary high-speed storage
+/project/groupname/      # Shared project space
+/data/                   # Raw data storage
+/software/               # Shared software installations</code></pre>
+
+        <h3>Storage Best Practices</h3>
+
+        <h4>Home Directory (<code>~</code> or <code>/home/username</code>)</h4>
+        <div class="info">
+            <ul>
+                <li><strong>Limited space</strong> (usually 10-50 GB)</li>
+                <li><strong>Backed up</strong> regularly</li>
+                <li>Store: scripts, small config files, important results</li>
+            </ul>
+        </div>
+        <pre><code># Check home directory usage
+du -sh ~/*</code></pre>
+
+        <h4>Scratch Space (<code>/scratch/username</code>)</h4>
+        <div class="warning">
+            <ul>
+                <li><strong>Large temporary storage</strong> (TBs available)</li>
+                <li><strong>High-speed I/O</strong> for active analysis</li>
+                <li><strong>Not backed up</strong> - files may be purged</li>
+                <li>Store: raw FASTQ files, intermediate analysis files</li>
+            </ul>
+        </div>
+        <pre><code># Create your scratch directory
+mkdir -p /scratch/$USER/ngs_analysis
+cd /scratch/$USER/ngs_analysis</code></pre>
+
+        <h4>Project Space (<code>/project/groupname</code>)</h4>
+        <div class="tip">
+            <ul>
+                <li><strong>Shared group storage</strong></li>
+                <li><strong>Persistent</strong> storage for collaborative work</li>
+                <li>Store: shared datasets, final results</li>
+            </ul>
+        </div>
+
+        <h2 id="slurm">Job Scheduling with SLURM</h2>
+
+        <h3>Understanding SLURM</h3>
+        <p>SLURM (Simple Linux Utility for Resource Management) manages job scheduling on HPC clusters.</p>
+
+        <h4>Key SLURM Commands</h4>
+        <pre><code># View cluster status
+sinfo
+
+# View job queue
+squeue
+
+# View your jobs
+squeue -u $USER
+
+# Job details
+scontrol show job JOBID
+
+# Cancel a job
+scancel JOBID</code></pre>
+
+        <h3>Interactive Jobs</h3>
+        <p>For testing and small analyses:</p>
+        <pre><code># Request interactive node
+sinteractive --time=2:00:00 --mem=8GB --cpus-per-task=4
+
+# Request GPU node (if available)
+sinteractive --time=1:00:00 --gres=gpu:1</code></pre>
+
+        <h3>Batch Job Submission</h3>
+
+        <h4>Basic SLURM Script Template</h4>
+        <pre><code>#!/bin/bash
+#SBATCH --job-name=fastq_analysis
+#SBATCH --output=%x_%j.out
+#SBATCH --error=%x_%j.err
+#SBATCH --time=04:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32GB
+#SBATCH --partition=general
+
+# Load required modules
+module load fastqc/0.11.9
+module load trimmomatic/0.39
+
+# Set working directory
+cd /scratch/$USER/ngs_analysis
+
+# Your analysis commands here
+echo "Starting analysis at $(date)"
+fastqc sample_R1.fastq.gz sample_R2.fastq.gz
+echo "Analysis completed at $(date)"</code></pre>
+
+        <h4>Submit the job</h4>
+        <pre><code>sbatch fastq_analysis.slurm</code></pre>
+
+        <h2 id="environment">Environment Management</h2>
+
+        <h3>Using Environment Modules</h3>
+        <p>Most HPC systems use environment modules to manage software:</p>
+        <pre><code># List available modules
+module avail
+
+# Search for specific software
+module avail fastq
+module avail python
+
+# Load a module
+module load fastqc/0.11.9
+
+# List loaded modules
+module list
+
+# Unload a module
+module unload fastqc
+
+# Unload all modules
+module purge</code></pre>
+
+        <h3>Creating Custom Environments</h3>
+
+        <h4>Using Conda/Mamba</h4>
+        <pre><code># Load conda module (if available)
+module load miniconda3
+
+# Create new environment
+conda create -n ngs_analysis python=3.9
+
+# Activate environment
+conda activate ngs_analysis
+
+# Install bioinformatics tools
+conda install -c bioconda fastqc trimmomatic bwa samtools</code></pre>
+
+        <h4>Using Python Virtual Environments</h4>
+        <pre><code># Load Python module
+module load python/3.9
+
+# Create virtual environment
+python -m venv ~/venvs/ngs_env
+
+# Activate environment
+source ~/venvs/ngs_env/bin/activate
+
+# Install packages
+pip install biopython pandas numpy</code></pre>
+
+        <h2 id="workflows">FASTQ File Analysis Workflows</h2>
+
+        <h3>1. Quality Control</h3>
+
+        <h4>FastQC Analysis</h4>
+        <pre><code>#!/bin/bash
+#SBATCH --job-name=fastqc_analysis
+#SBATCH --output=fastqc_%j.out
+#SBATCH --time=01:00:00
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=8GB
+
+module load fastqc/0.11.9
+
+# Create output directory
+mkdir -p /scratch/$USER/fastqc_results
+
+# Run FastQC on all FASTQ files
+fastqc -t 4 -o /scratch/$USER/fastqc_results/ *.fastq.gz
+
+# Generate summary report
+multiqc /scratch/$USER/fastqc_results/ -o /scratch/$USER/fastqc_results/</code></pre>
+
+        <h3>2. Read Trimming and Filtering</h3>
+
+        <h4>Trimmomatic Script</h4>
+        <pre><code>#!/bin/bash
+#SBATCH --job-name=trimming
+#SBATCH --output=trim_%j.out
+#SBATCH --time=02:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=16GB
+
+module load trimmomatic/0.39
+
+# Set variables
+INPUT_DIR="/scratch/$USER/raw_fastq"
+OUTPUT_DIR="/scratch/$USER/trimmed_fastq"
+ADAPTERS="/path/to/adapters/TruSeq3-PE.fa"
+
+mkdir -p $OUTPUT_DIR
+
+# Process paired-end reads
+for R1 in ${INPUT_DIR}/*_R1.fastq.gz; do
+    # Extract sample name
+    SAMPLE=$(basename $R1 _R1.fastq.gz)
+    R2=${INPUT_DIR}/${SAMPLE}_R2.fastq.gz
+    
+    # Run Trimmomatic
+    java -jar $TRIMMOMATIC_PATH/trimmomatic-0.39.jar PE -threads 8 \
+        $R1 $R2 \
+        ${OUTPUT_DIR}/${SAMPLE}_R1_paired.fastq.gz \
+        ${OUTPUT_DIR}/${SAMPLE}_R1_unpaired.fastq.gz \
+        ${OUTPUT_DIR}/${SAMPLE}_R2_paired.fastq.gz \
+        ${OUTPUT_DIR}/${SAMPLE}_R2_unpaired.fastq.gz \
+        ILLUMINACLIP:${ADAPTERS}:2:30:10 \
+        LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:36
+done</code></pre>
+
+        <h3>3. Alignment Workflows</h3>
+
+        <h4>BWA Alignment Script</h4>
+        <pre><code>#!/bin/bash
+#SBATCH --job-name=bwa_alignment
+#SBATCH --output=alignment_%j.out
+#SBATCH --time=06:00:00
+#SBATCH --cpus-per-task=16
+#SBATCH --mem=64GB
+
+module load bwa/0.7.17
+module load samtools/1.12
+
+# Set variables
+REFERENCE="/path/to/reference/genome.fa"
+FASTQ_DIR="/scratch/$USER/trimmed_fastq"
+OUTPUT_DIR="/scratch/$USER/alignments"
+
+mkdir -p $OUTPUT_DIR
+
+# Index reference genome (if not already done)
+# bwa index $REFERENCE
+
+# Align reads
+for R1 in ${FASTQ_DIR}/*_R1_paired.fastq.gz; do
+    SAMPLE=$(basename $R1 _R1_paired.fastq.gz)
+    R2=${FASTQ_DIR}/${SAMPLE}_R2_paired.fastq.gz
+    
+    # BWA alignment
+    bwa mem -t 16 $REFERENCE $R1 $R2 | \
+    samtools view -Sb - | \
+    samtools sort -@ 8 -o ${OUTPUT_DIR}/${SAMPLE}.sorted.bam
+    
+    # Index BAM file
+    samtools index ${OUTPUT_DIR}/${SAMPLE}.sorted.bam
+done</code></pre>
+
+        <h3>4. Variant Calling</h3>
+
+        <h4>GATK Pipeline Script</h4>
+        <pre><code>#!/bin/bash
+#SBATCH --job-name=variant_calling
+#SBATCH --output=variants_%j.out
+#SBATCH --time=08:00:00
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32GB
+
+module load gatk/4.2.0
+module load samtools/1.12
+
+# Set variables
+REFERENCE="/path/to/reference/genome.fa"
+BAM_DIR="/scratch/$USER/alignments"
+OUTPUT_DIR="/scratch/$USER/variants"
+
+mkdir -p $OUTPUT_DIR
+
+# Process each sample
+for BAM in ${BAM_DIR}/*.sorted.bam; do
+    SAMPLE=$(basename $BAM .sorted.bam)
+    
+    # Mark duplicates
+    gatk MarkDuplicates \
+        -I $BAM \
+        -O ${OUTPUT_DIR}/${SAMPLE}.dedup.bam \
+        -M ${OUTPUT_DIR}/${SAMPLE}.metrics.txt
+    
+    # Index deduplicated BAM
+    samtools index ${OUTPUT_DIR}/${SAMPLE}.dedup.bam
+    
+    # Call variants
+    gatk HaplotypeCaller \
+        -R $REFERENCE \
+        -I ${OUTPUT_DIR}/${SAMPLE}.dedup.bam \
+        -O ${OUTPUT_DIR}/${SAMPLE}.vcf.gz
+done</code></pre>
+
+        <h3>5. Parallel Processing with Job Arrays</h3>
+
+        <h4>Job Array Script</h4>
+        <pre><code>#!/bin/bash
+#SBATCH --job-name=parallel_fastqc
+#SBATCH --output=fastqc_%A_%a.out
+#SBATCH --error=fastqc_%A_%a.err
+#SBATCH --array=1-10%4    # Process 10 samples, max 4 concurrent jobs
+#SBATCH --time=01:00:00
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=4GB
+
+module load fastqc/0.11.9
+
+# Create array of sample files
+SAMPLES=($(ls /scratch/$USER/raw_fastq/*_R1.fastq.gz))
+SAMPLE=${SAMPLES[$SLURM_ARRAY_TASK_ID-1]}
+SAMPLE_NAME=$(basename $SAMPLE _R1.fastq.gz)
+
+# Process the assigned sample
+fastqc -t 2 ${SAMPLE} ${SAMPLE/_R1/_R2} \
+    -o /scratch/$USER/fastqc_results/</code></pre>
+
+        <h2 id="data-transfer">Data Transfer</h2>
+
+        <h3>Moving Data to/from HPC</h3>
+
+        <h4>Using scp</h4>
+        <pre><code># Upload files to HPC
+scp local_file.fastq.gz username@hpc:/scratch/username/
+
+# Download files from HPC
+scp username@hpc:/scratch/username/results.txt ./
+
+# Transfer directories
+scp -r username@hpc:/scratch/username/analysis_results/ ./</code></pre>
+
+        <h4>Using rsync (recommended for large transfers)</h4>
+        <pre><code># Sync local directory to HPC
+rsync -avz --progress local_data/ username@hpc:/scratch/username/data/
+
+# Sync from HPC to local
+rsync -avz --progress username@hpc:/scratch/username/results/ ./results/
+
+# Resume interrupted transfer
+rsync -avz --progress --partial username@hpc:/path/to/data/ ./</code></pre>
+
+        <h4>Using Globus (if available)</h4>
+        <p>Many institutions provide Globus for large data transfers:</p>
+        <ol>
+            <li>Access Globus web interface</li>
+            <li>Authenticate with institutional credentials</li>
+            <li>Set up endpoints for source and destination</li>
+            <li>Initiate transfer through web interface</li>
+        </ol>
+
+        <h2 id="best-practices">Best Practices</h2>
+
+        <h3>Resource Management</h3>
+
+        <h4>Memory Estimation</h4>
+        <pre><code># Monitor memory usage during interactive session
+watch -n 1 'free -h'
+
+# Check memory usage of running job
+ssh compute-node-XX
+ps aux | grep $USER</code></pre>
+
+        <h4>CPU Optimization</h4>
+        <ul>
+            <li>Use appropriate number of threads based on tool requirements</li>
+            <li>Some tools don't scale linearly with CPU cores</li>
+            <li>Test with small datasets first</li>
+        </ul>
+
+        <h4>Storage Management</h4>
+        <pre><code># Clean up scratch space regularly
+find /scratch/$USER -type f -mtime +30 -delete
+
+# Compress intermediate files
+gzip *.sam
+pigz -p 8 *.fastq  # parallel compression
+
+# Archive completed projects
+tar -czf project_archive.tar.gz /scratch/$USER/completed_project/</code></pre>
+
+        <h3>Script Organization</h3>
+
+        <h4>Directory Structure</h4>
+        <pre><code>~/ngs_projects/
+├── scripts/
+│   ├── 01_quality_control.slurm
+│   ├── 02_trimming.slurm
+│   ├── 03_alignment.slurm
+│   └── utilities/
+├── configs/
+│   ├── sample_list.txt
+│   └── reference_paths.txt
+└── logs/
+    └── job_logs/</code></pre>
+
+        <h4>Version Control</h4>
+        <pre><code># Initialize git repository for scripts
+cd ~/ngs_projects/scripts
+git init
+git add *.slurm
+git commit -m "Initial commit of analysis scripts"</code></pre>
+
+        <h3>Workflow Management</h3>
+
+        <h4>Using Snakemake</h4>
+        <pre><code># Snakefile example
+rule all:
+    input:
+        expand("results/fastqc/{sample}_fastqc.html", sample=SAMPLES)
+
+rule fastqc:
+    input:
+        "data/{sample}.fastq.gz"
+    output:
+        "results/fastqc/{sample}_fastqc.html"
+    threads: 2
+    shell:
+        "fastqc -t {threads} {input} -o results/fastqc/"</code></pre>
+
+        <h4>Submit Snakemake to SLURM</h4>
+        <pre><code>snakemake --cluster "sbatch --time={cluster.time} --mem={cluster.mem} --cpus-per-task={cluster.cpus}" \
+          --cluster-config cluster.yaml \
+          --jobs 10</code></pre>
+
+        <h2 id="troubleshooting">Troubleshooting</h2>
+
+        <h3>Common Issues and Solutions</h3>
+
+        <h4>Job Failures</h4>
+
+        <div class="warning">
+            <strong>Out of Memory Error</strong>
+            <pre><code># Check job details
+scontrol show job JOBID
+
+# Increase memory in SLURM script
+#SBATCH --mem=64GB
+
+# Use memory-efficient tools
+# samtools sort -m 2G instead of default</code></pre>
+        </div>
+
+        <div class="warning">
+            <strong>Time Limit Exceeded</strong>
+            <pre><code># Increase time limit
+#SBATCH --time=12:00:00
+
+# Break large jobs into smaller chunks
+# Use job arrays for parallel processing</code></pre>
+        </div>
+
+        <div class="warning">
+            <strong>Storage Issues</strong>
+            <pre><code># Check quota
+quota -u $USER
+
+# Clean up temporary files
+find /scratch/$USER -name "*.tmp" -delete
+
+# Move results to project space
+rsync -av /scratch/$USER/important_results/ /project/groupname/</code></pre>
+        </div>
+
+        <h4>Module Problems</h4>
+        <pre><code># Module not found
+module spider software_name
+
+# Conflicting modules
+module purge
+module load required_module
+
+# Version conflicts
+module list
+module unload conflicting_module</code></pre>
+
+        <h4>File Permission Issues</h4>
+        <pre><code># Fix file permissions
+chmod 755 script.sh
+chmod -R 644 *.fastq.gz
+
+# Group permissions for shared data
+chgrp -R groupname /project/groupname/shared_data/
+chmod -R g+rw /project/groupname/shared_data/</code></pre>
+
+        <h3>Performance Optimization</h3>
+
+        <h4>I/O Optimization</h4>
+        <pre><code># Use local storage for temporary files
+export TMPDIR=/tmp/$SLURM_JOB_ID
+mkdir -p $TMPDIR
+
+# Parallel compression/decompression
+pigz -p 8 -d *.gz
+pbzip2 -p8 large_file.bz2</code></pre>
+
+        <h4>Memory Optimization</h4>
+        <pre><code># Stream processing instead of loading entire files
+zcat large_file.fastq.gz | head -1000000 | analysis_tool
+
+# Use memory-mapped files when possible
+samtools view -T reference.fa alignment.bam region</code></pre>
+
+        <h3>Getting Help</h3>
+
+        <h4>System Resources</h4>
+        <pre><code># Check system documentation
+man slurm
+man module
+
+# HPC-specific help
+# Most clusters have documentation at:
+# https://hpc.institution.edu/docs/</code></pre>
+
+        <h4>Community Resources</h4>
+        <ul>
+            <li><strong>Biostars</strong>: biostars.org</li>
+            <li><strong>SEQanswers</strong>: seqanswers.com</li>
+            <li><strong>Galaxy Training</strong>: training.galaxyproject.org</li>
+            <li><strong>SLURM Documentation</strong>: slurm.schedmd.com</li>
+        </ul>
+
+        <h4>Institutional Support</h4>
+        <ul>
+            <li>Submit help tickets to HPC support team</li>
+            <li>Attend HPC training workshops</li>
+            <li>Join local bioinformatics groups</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>This tutorial provides a foundation for using HPC systems with Rocky Linux for NGS data analysis. Key takeaways:</p>
+        <ol>
+            <li><strong>Understand your HPC environment</strong> - file systems, resource limits, available software</li>
+            <li><strong>Use appropriate resources</strong> - don't over-allocate CPU/memory, clean up storage</li>
+            <li><strong>Organize your work</strong> - structured directories, version control, documented scripts</li>
+            <li><strong>Optimize for HPC</strong> - parallel processing, efficient I/O, proper job submission</li>
+            <li><strong>Monitor and troubleshoot</strong> - check job status, resource usage, error logs</li>
+        </ol>
+
+        <h3>Next Steps</h3>
+        <ul>
+            <li>Practice with small datasets first</li>
+            <li>Explore advanced workflow managers (Snakemake, Nextflow)</li>
+            <li>Learn about containerization (Singularity/Apptainer)</li>
+            <li>Participate in bioinformatics training programs</li>
+        </ul>
+
+        <h3>Additional Resources</h3>
+        <ul>
+            <li><a href="https://slurm.schedmd.com/quickstart.html">SLURM Quick Start Guide</a></li>
+            <li><a href="https://bioconda.github.io/">Bioconda Documentation</a></li>
+            <li><a href="https://training.galaxyproject.org/">Galaxy Training Materials</a></li>
+            <li><a href="https://carpentries-incubator.github.io/hpc-intro/">Carpentries HPC Lessons</a></li>
+        </ul>
+
+        <hr>
+        <p><em>This tutorial is designed to be a living document. As HPC technologies and bioinformatics tools evolve, update the content accordingly. Always refer to your institution's specific HPC documentation for system-specific details.</em></p>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
+
+    <script>
+        // Back to top functionality
+        window.addEventListener('scroll', function() {
+            const backToTop = document.getElementById('backToTop');
+            if (window.pageYOffset > 300) {
+                backToTop.style.display = 'block';
+            } else {
+                backToTop.style.display = 'none';
+            }
+        });
+
+        document.getElementById('backToTop').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
