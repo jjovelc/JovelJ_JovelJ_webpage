@@ -1135,3 +1135,11 @@ ul li a:hover {
   margin-top: 500px; 
 }
 
+.blinking-text {
+  animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
