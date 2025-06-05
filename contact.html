@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="www/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Contact</title>
     <style>
-
         body, html {
             margin: 0;
             padding: 0;
@@ -14,9 +14,148 @@
             background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
             height: 100%;
             overflow: auto;
-            
         }
 
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-info:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .contact-card h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-details {
+            color: #fff;
+            line-height: 1.8;
+        }
+
+        .contact-details a {
+            color: #00BFFF;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: #FFD700;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            color: #FFD700;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .contact-form h3 {
+            color: #FFD700;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .button-group button {
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .button-group button[type="submit"] {
+            background: #FFD700;
+            color: #000;
+        }
+
+        .button-group button[type="reset"] {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        .button-group button:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 
@@ -38,58 +177,68 @@
             </div>
         </div>
     </div>
+
     <div class="main">
-        <p class="subtitle-yellow">University of Calgary (UofC)<br></p>
-        
-        <div class="content">
-            
-        <p class="contact-format">
-            Juan Jovel<br>
-            Bioinformatician<br>
-            Faculty of Veterinary Medicine<br>
-            University of Calgary<br>
-            1E08 CWPH Building<br>
-            3280 Hospital Drive NW<br>
-            Calgary, AB T2N 4Z6<br>
-            <a href="https://vet.ucvm.ca/bioinformatics/home" style="color: lightblue;">https://vet.ucvm.ca/bioinformatics/home</a>
-        </p> <br><br>
-            
-            <p class="subtitle-yellow">Dayhoff Technologies<br></p>
-            <p class="contact-format">
-                Juan Jovel<br>
-                Bioinformatics lead and advisor<br>
-                Dayhoff Technologies<br>
-                Unit 100, 87 Wade Avenue, Toronto, Ont. Canada, M6H 1P5<br>
-                Suit 312, 750 North St. Paul St. 200, Dallas, TX, USA 75201<br> 
-                <a href="https://www.dayhoff.ai" style="color: lightblue;">https://www.dayhoff.ai</a>
-            </p>
-
-            <p class="spacer"></p>
-            <!-- Contact Form using Formspree -->
-                <div class="email-container" >
-                    <p class="main-paragraph" style="color: dodgerblue; width: 200px;">Send me a message</p><br>
-                    
-                    <form class="contact-form" action="https://formspree.io/f/mnnargqj" method="POST">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Your name" required>
-                
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Your email" required>
-                
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
-
-                        <!-- Buttons inline -->
-                        <div class="button-group">
-                            <button type="submit">Send</button>
-                            <button type="reset" class="clear-button">Clear</button>
-                        </div>
-                
-                        
-                    </form>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>University of Calgary</h3>
+                    <div class="contact-details">
+                        <p>Juan Jovel</p>
+                        <p>Bioinformatician</p>
+                        <p>Faculty of Veterinary Medicine</p>
+                        <p>1E08 CWPH Building</p>
+                        <p>3280 Hospital Drive NW</p>
+                        <p>Calgary, AB T2N 4Z6</p>
+                        <a href="https://vet.ucvm.ca/bioinformatics/home">https://vet.ucvm.ca/bioinformatics/home</a>
+                    </div>
                 </div>
 
-            
+                <div class="contact-card">
+                    <h3>Dayhoff Technologies</h3>
+                    <div class="contact-details">
+                        <p>Juan Jovel</p>
+                        <p>Bioinformatics lead and advisor</p>
+                        <p>Unit 100, 87 Wade Avenue</p>
+                        <p>Toronto, Ont. Canada, M6H 1P5</p>
+                        <p>Suit 312, 750 North St. Paul St. 200</p>
+                        <p>Dallas, TX, USA 75201</p>
+                        <a href="https://www.dayhoff.ai">https://www.dayhoff.ai</a>
+                    </div>
+                </div>
+
+                <div class="social-links">
+                    <a href="https://twitter.com/yourusername" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:your.email@example.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <h3>Send me a message</h3>
+                <form action="https://formspree.io/f/mnnargqj" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit">Send Message</button>
+                        <button type="reset">Clear</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </body>
