@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="www/styles.css">
+    <title>About</title>
+    <style>
+      .portrait {
+        position: absolute;
+        left: 1.5in;
+        top: 1.5in;
+        height: 2.5in; /* Changed from 1.5in to 2.5in */
+        width: auto; /* Maintains aspect ratio */
+        object-fit: cover; /* Ensures proper scaling */
+      }
+      
+      .portrait-caption {
+        position: absolute;
+        left: 1.5in;
+        top: 4.2in; /* Position below the 2.5in tall image + small gap */
+        font-size: 20px;
+        font-style: normal;
+        color: #666;
+        text-align: center;
+        width: auto;
+      }
+      
+      /* Add margin to content to avoid overlap with portrait */
+      .content {
+        margin-left: 4in; /* Adjust based on portrait width + spacing */
+        margin-top: 1.5in;
+      }
+      
+      /* Alternative: if you want text to wrap around the image */
+      .portrait-float {
+        float: left;
+        margin: 1.5in 0 0 1.5in;
+        height: 2.5in;
+        width: auto;
+        object-fit: cover;
+        shape-outside: margin-box; /* For better text wrapping */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="nav">
+          <div class="links">
+              <a href="index.html">Home</a>
+              <a href="courses.html">courses</a>
+              <a href="about.html">About</a>
+              <a href="aboutMe.html">AboutMe</a>
+              <a href="software.html">Software</a>
+              <a href="publications.html">Publications</a>
+              <a href="blog.html">Blog</a>
+              <a href="contact.html">Contact</a>
+          </div>
+      </div>
+    </div>
+  
+    <img src="./images/JJ_Portrait.jpg" alt="Juan Jovel Portrait" class="portrait">
+    <div class="portrait-caption">Juan Jovel, PhD</div>
+    
+    <div class="content">
+      <p class="subtitle-blue">Biosketch</p>
+      <p class="main-paragraph">I am a bioinformatician and molecular biologist with over two decades of experience in computational biology, genomics, and infectious disease research. He is currently based at the Faculty of Veterinary Medicine at the University of Calgary, where he leads bioinformatics efforts to support high-throughput sequencing and multi-omics studies in animal and human health.
+      <br><br>
+      I earned a Ph.D. in Molecular Biology and Virology from the University of Stuttgart, Germany, where I graduated magna cum laude for my work on complex plant virus interactions. I also hold an M.Sc. in Plant Pathology from CATIE, Costa Rica, and an undergraduate degree in Agricultural Engineering from the Universidad Nacional Agraria in Nicaragua.
+      <br><br>
+      With a professional trajectory spanning North and Central America as well as Europe, Dr. Jovel (that's me) has held research and academic appointments at prestigious institutions including the University of California Riverside, The Scripps Research Institute, and Pacific Agriculture and Agri-Food Canada. At the University of Alberta, he served as Manager and Lead Bioinformatician at The Applied Genomics Core (TAGC), and as a Research Associate in the Department of Medicine, where he contributed to single-cell and metagenomic studies in oncology and liver diseases.
+      <br><br>
+      An experienced educator, Dr. Jovel has developed and taught bioinformatics courses for graduate students and researchers, including hands-on workshops and university-level modules in computational transcriptomics and bacterial genome analysis. His teaching philosophy centers on active learning through practical application, and his courses have received high praise from participants.
+      By combining field observations with computational analyses, researchers can develop strategies for conserving biodiversity and mitigating the effects of environmental change.
+      <br><br>
+      Fluent in English and Spanish, with working knowledge of German, Dr. Jovel is also proficient in multiple programming languages including Python, R, Perl, and C++, as well as web development tools. He has delivered invited lectures internationally, addressing topics ranging from bioinformatics in the 21st century to innovations in genome assembly and pathogen detection.
+      <br><br>
+      Dr. Jovel's work reflects a lifelong commitment to interdisciplinary science and education, bridging molecular biology and computational approaches to advance research in genomics, transcriptomics, metagenomics, and beyond.
+      <br><br>
+      </p>
+    </div>
+  </body>
+</html>
