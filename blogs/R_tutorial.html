@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R Programming Manual for Visual Studio Code</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #2980b9;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            color: #7f8c8d;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+        
+        .toc {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .toc h2 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-left: none;
+            padding-left: 0;
+        }
+        
+        .toc ol {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .toc li {
+            margin-bottom: 5px;
+        }
+        
+        .toc a {
+            color: #2980b9;
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        code {
+            background-color: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Consolas, monospace;
+            color: #e74c3c;
+            font-size: 0.9em;
+        }
+        
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        pre code {
+            background-color: transparent;
+            color: #ecf0f1;
+            padding: 0;
+            font-size: 0.9em;
+        }
+        
+        .comment {
+            color: #95a5a6;
+        }
+        
+        .string {
+            color: #2ecc71;
+        }
+        
+        .keyword {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .note {
+            background-color: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning {
+            background-color: #fef9e7;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        ul, ol {
+            padding-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        th, td {
+            border: 1px solid #bdc3c7;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #ffeaa7;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>R Programming Manual for Visual Studio Code</h1>
+
+        <div class="toc">
+            <h2>Table of Contents</h2>
+            <ol>
+                <li><a href="#setting-up-r">Setting Up R in VSCode</a></li>
+                <li><a href="#essential-extensions">Essential VSCode Extensions for R</a></li>
+                <li><a href="#r-basics">R Basics and Syntax</a></li>
+                <li><a href="#data-types">Data Types and Structures</a></li>
+                <li><a href="#working-with-data">Working with Data</a></li>
+                <li><a href="#control-structures">Control Structures</a></li>
+                <li><a href="#functions">Functions</a></li>
+                <li><a href="#data-visualization">Data Visualization</a></li>
+                <li><a href="#statistical-analysis">Statistical Analysis</a></li>
+                <li><a href="#package-management">Package Management</a></li>
+                <li><a href="#file-io">File I/O Operations</a></li>
+                <li><a href="#debugging">Debugging in VSCode</a></li>
+                <li><a href="#best-practices">Best Practices</a></li>
+                <li><a href="#common-tasks">Common Tasks and Examples</a></li>
+            </ol>
+        </div>
+
+        <h2 id="setting-up-r">Setting Up R in VSCode</h2>
+
+        <h3>Prerequisites</h3>
+        <ol>
+            <li><strong>Install R</strong>
+                <ul>
+                    <li>Download from <a href="https://cran.r-project.org/">CRAN</a></li>
+                    <li>Install R base system on your operating system</li>
+                    <li>Verify installation by opening terminal and typing <code>R --version</code></li>
+                </ul>
+            </li>
+            <li><strong>Install Rtools (Windows Only)</strong>
+                <ul>
+                    <li>Download from <a href="https://cran.r-project.org/bin/windows/Rtools/">CRAN Rtools</a></li>
+                    <li>Required for building packages from source</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>VSCode Configuration</h3>
+        <ol>
+            <li><strong>Install R Extension</strong>
+                <ul>
+                    <li>Open VSCode Extensions panel (<code>Ctrl+Shift+X</code>)</li>
+                    <li>Search for "R" by REditorSupport</li>
+                    <li>Install the extension</li>
+                </ul>
+            </li>
+            <li><strong>Configure R Path</strong>
+                <ul>
+                    <li>Open Settings (<code>Ctrl+,</code>)</li>
+                    <li>Search for "r.rterm"</li>
+                    <li>Set the path to your R executable:
+                        <ul>
+                            <li>Windows: <code>C:\Program Files\R\R-4.x.x\bin\x64\R.exe</code></li>
+                            <li>Mac: <code>/usr/local/bin/R</code></li>
+                            <li>Linux: <code>/usr/bin/R</code></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2 id="essential-extensions">Essential VSCode Extensions for R</h2>
+
+        <h3>Core Extensions</h3>
+        <ol>
+            <li><strong>R</strong> (REditorSupport.r) - Syntax highlighting, IntelliSense, and debugging</li>
+            <li><strong>R LSP Client</strong> (REditorSupport.r-lsp) - Language server protocol support</li>
+            <li><strong>R Debugger</strong> (RDebugger.r-debugger) - Advanced debugging capabilities</li>
+        </ol>
+
+        <h3>Recommended Extensions</h3>
+        <ol start="4">
+            <li><strong>Rainbow CSV</strong> - Better CSV file viewing</li>
+            <li><strong>Bracket Pair Colorizer</strong> - Visual bracket matching</li>
+            <li><strong>GitLens</strong> - Enhanced Git integration</li>
+            <li><strong>Markdown All in One</strong> - For R Markdown support</li>
+        </ol>
+
+        <h2 id="r-basics">R Basics and Syntax</h2>
+
+        <h3>Basic Operations</h3>
+        <pre><code><span class="comment"># Assignment operators</span>
+x &lt;- 5          <span class="comment"># Preferred assignment operator</span>
+y = 10          <span class="comment"># Also works but less common</span>
+15 -&gt; z         <span class="comment"># Right assignment (rarely used)</span>
+
+<span class="comment"># Arithmetic operators</span>
+a &lt;- 10 + 5     <span class="comment"># Addition: 15</span>
+b &lt;- 10 - 5     <span class="comment"># Subtraction: 5</span>
+c &lt;- 10 * 5     <span class="comment"># Multiplication: 50</span>
+d &lt;- 10 / 5     <span class="comment"># Division: 2</span>
+e &lt;- 10^2       <span class="comment"># Exponentiation: 100</span>
+f &lt;- 10 %% 3    <span class="comment"># Modulo: 1</span>
+g &lt;- 10 %/% 3   <span class="comment"># Integer division: 3</span>
+
+<span class="comment"># Comparison operators</span>
+10 == 10        <span class="comment"># Equal: TRUE</span>
+10 != 5         <span class="comment"># Not equal: TRUE</span>
+10 &gt; 5          <span class="comment"># Greater than: TRUE</span>
+10 &lt; 5          <span class="comment"># Less than: FALSE</span>
+10 &gt;= 10        <span class="comment"># Greater or equal: TRUE</span>
+10 &lt;= 5         <span class="comment"># Less or equal: FALSE</span>
+
+<span class="comment"># Logical operators</span>
+TRUE &amp; FALSE    <span class="comment"># AND: FALSE</span>
+TRUE | FALSE    <span class="comment"># OR: TRUE</span>
+!TRUE          <span class="comment"># NOT: FALSE</span></code></pre>
+
+        <h3>Comments and Documentation</h3>
+        <pre><code><span class="comment"># Single line comment</span>
+
+<span class="comment"># Multi-line comments using multiple # symbols</span>
+<span class="comment"># This is line 1 of a comment</span>
+<span class="comment"># This is line 2 of a comment</span>
+
+<span class="comment"># Function documentation (roxygen2 style)</span>
+<span class="comment">#' Add two numbers together</span>
+<span class="comment">#' </span>
+<span class="comment">#' @param x A number</span>
+<span class="comment">#' @param y A number</span>
+<span class="comment">#' @return The sum of x and y</span>
+<span class="comment">#' @examples</span>
+<span class="comment">#' add_numbers(2, 3)</span>
+add_numbers &lt;- <span class="keyword">function</span>(x, y) {
+  <span class="keyword">return</span>(x + y)
+}</code></pre>
+
+        <h2 id="data-types">Data Types and Structures</h2>
+
+        <h3>Basic Data Types</h3>
+        <pre><code><span class="comment"># Numeric (double)</span>
+num &lt;- 42.5
+class(num)              <span class="comment"># "numeric"</span>
+
+<span class="comment"># Integer</span>
+int &lt;- 42L              <span class="comment"># L suffix for integer</span>
+class(int)              <span class="comment"># "integer"</span>
+
+<span class="comment"># Character (string)</span>
+char &lt;- <span class="string">"Hello, World!"</span>
+class(char)             <span class="comment"># "character"</span>
+
+<span class="comment"># Logical (boolean)</span>
+logical &lt;- TRUE
+class(logical)          <span class="comment"># "logical"</span>
+
+<span class="comment"># Complex</span>
+complex &lt;- 3 + 2i
+class(complex)          <span class="comment"># "complex"</span>
+
+<span class="comment"># Check data type</span>
+is.numeric(num)         <span class="comment"># TRUE</span>
+is.character(char)      <span class="comment"># TRUE</span>
+is.logical(logical)     <span class="comment"># TRUE</span></code></pre>
+
+        <h3>Data Structures</h3>
+
+        <h4>Vectors</h4>
+        <pre><code><span class="comment"># Creating vectors</span>
+numeric_vector &lt;- c(1, 2, 3, 4, 5)
+character_vector &lt;- c(<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>)
+logical_vector &lt;- c(TRUE, FALSE, TRUE)
+
+<span class="comment"># Vector operations</span>
+length(numeric_vector)                    <span class="comment"># 5</span>
+numeric_vector[1]                        <span class="comment"># First element: 1</span>
+numeric_vector[c(1, 3, 5)]              <span class="comment"># Elements 1, 3, 5</span>
+numeric_vector[numeric_vector &gt; 3]       <span class="comment"># Elements > 3</span>
+
+<span class="comment"># Named vectors</span>
+named_vector &lt;- c(a = 1, b = 2, c = 3)
+named_vector[<span class="string">"a"</span>]                        <span class="comment"># Access by name</span></code></pre>
+
+        <h4>Lists</h4>
+        <pre><code><span class="comment"># Creating lists</span>
+my_list &lt;- list(
+  numbers = c(1, 2, 3),
+  text = <span class="string">"Hello"</span>,
+  logical = TRUE,
+  nested_list = list(a = 1, b = 2)
+)
+
+<span class="comment"># Accessing list elements</span>
+my_list$numbers                          <span class="comment"># By name with $</span>
+my_list[[<span class="string">"numbers"</span>]]                     <span class="comment"># By name with [[]]</span>
+my_list[[1]]                            <span class="comment"># By index</span>
+my_list[<span class="string">"numbers"</span>]                       <span class="comment"># Returns list with one element</span></code></pre>
+
+        <h4>Data Frames</h4>
+        <pre><code><span class="comment"># Creating data frames</span>
+df &lt;- data.frame(
+  name = c(<span class="string">"Alice"</span>, <span class="string">"Bob"</span>, <span class="string">"Charlie"</span>),
+  age = c(25, 30, 35),
+  city = c(<span class="string">"New York"</span>, <span class="string">"London"</span>, <span class="string">"Tokyo"</span>),
+  stringsAsFactors = FALSE
+)
+
+<span class="comment"># Accessing data frame elements</span>
+df$name                                  <span class="comment"># Column by name</span>
+df[[<span class="string">"name"</span>]]                            <span class="comment"># Column by name (alternative)</span>
+df[1, ]                                 <span class="comment"># First row</span>
+df[, 1]                                 <span class="comment"># First column</span>
+df[1:2, c(<span class="string">"name"</span>, <span class="string">"age"</span>)]               <span class="comment"># Subset rows and columns</span>
+
+<span class="comment"># Data frame information</span>
+nrow(df)                                <span class="comment"># Number of rows</span>
+ncol(df)                                <span class="comment"># Number of columns</span>
+dim(df)                                 <span class="comment"># Dimensions</span>
+names(df)                               <span class="comment"># Column names</span>
+str(df)                                 <span class="comment"># Structure</span>
+summary(df)                             <span class="comment"># Summary statistics</span></code></pre>
+
+        <h4>Matrices</h4>
+        <pre><code><span class="comment"># Creating matrices</span>
+matrix1 &lt;- matrix(1:12, nrow = 3, ncol = 4)
+matrix2 &lt;- matrix(1:12, nrow = 3, ncol = 4, byrow = TRUE)
+
+<span class="comment"># Matrix operations</span>
+dim(matrix1)                            <span class="comment"># Dimensions</span>
+matrix1[2, 3]                           <span class="comment"># Element at row 2, column 3</span>
+matrix1[, 1]                            <span class="comment"># First column</span>
+matrix1[1, ]                            <span class="comment"># First row</span>
+
+<span class="comment"># Matrix arithmetic</span>
+matrix1 + matrix2                       <span class="comment"># Element-wise addition</span>
+matrix1 * matrix2                       <span class="comment"># Element-wise multiplication</span>
+matrix1 %*% t(matrix2)                  <span class="comment"># Matrix multiplication</span></code></pre>
+
+        <h2 id="working-with-data">Working with Data</h2>
+
+        <h3>Data Import and Export</h3>
+        <pre><code><span class="comment"># Reading CSV files</span>
+data &lt;- read.csv(<span class="string">"file.csv"</span>)
+data &lt;- read.csv(<span class="string">"file.csv"</span>, header = TRUE, sep = <span class="string">","</span>)
+
+<span class="comment"># Reading other formats</span>
+data &lt;- read.table(<span class="string">"file.txt"</span>, header = TRUE, sep = <span class="string">"\t"</span>)
+data &lt;- read.delim(<span class="string">"file.txt"</span>)
+
+<span class="comment"># Writing data</span>
+write.csv(data, <span class="string">"output.csv"</span>, row.names = FALSE)
+write.table(data, <span class="string">"output.txt"</span>, sep = <span class="string">"\t"</span>, row.names = FALSE)
+
+<span class="comment"># Reading from URLs</span>
+url_data &lt;- read.csv(<span class="string">"https://example.com/data.csv"</span>)</code></pre>
+
+        <h3>Data Manipulation</h3>
+        <pre><code><span class="comment"># Viewing data</span>
+head(df)                                <span class="comment"># First 6 rows</span>
+tail(df)                                <span class="comment"># Last 6 rows</span>
+View(df)                                <span class="comment"># Open in viewer (VSCode)</span>
+
+<span class="comment"># Filtering data</span>
+subset(df, age &gt; 25)                    <span class="comment"># Rows where age > 25</span>
+df[df$age &gt; 25, ]                      <span class="comment"># Alternative syntax</span>
+
+<span class="comment"># Sorting data</span>
+df[order(df$age), ]                     <span class="comment"># Sort by age (ascending)</span>
+df[order(-df$age), ]                    <span class="comment"># Sort by age (descending)</span>
+
+<span class="comment"># Adding columns</span>
+df$salary &lt;- c(50000, 60000, 70000)
+df$bonus &lt;- df$salary * 0.1
+
+<span class="comment"># Removing columns</span>
+df$bonus &lt;- NULL                        <span class="comment"># Remove bonus column</span>
+df &lt;- df[, !names(df) %in% c(<span class="string">"bonus"</span>)]  <span class="comment"># Alternative method</span></code></pre>
+
+        <h3>Missing Data</h3>
+        <pre><code><span class="comment"># Creating data with missing values</span>
+data_with_na &lt;- c(1, 2, NA, 4, 5)
+
+<span class="comment"># Checking for missing values</span>
+is.na(data_with_na)                     <span class="comment"># Logical vector</span>
+any(is.na(data_with_na))               <span class="comment"># TRUE if any NA</span>
+sum(is.na(data_with_na))               <span class="comment"># Count of NA values</span>
+
+<span class="comment"># Handling missing values</span>
+na.omit(data_with_na)                   <span class="comment"># Remove NA values</span>
+data_with_na[!is.na(data_with_na)]     <span class="comment"># Remove NA values (alternative)</span>
+mean(data_with_na, na.rm = TRUE)       <span class="comment"># Calculate mean ignoring NA</span></code></pre>
+
+        <h2 id="control-structures">Control Structures</h2>
+
+        <h3>Conditional Statements</h3>
+        <pre><code><span class="comment"># if-else statements</span>
+x &lt;- 10
+
+<span class="keyword">if</span> (x &gt; 5) {
+  print(<span class="string">"x is greater than 5"</span>)
+} <span class="keyword">else if</span> (x == 5) {
+  print(<span class="string">"x equals 5"</span>)
+} <span class="keyword">else</span> {
+  print(<span class="string">"x is less than 5"</span>)
+}
+
+<span class="comment"># Vectorized conditional (ifelse)</span>
+numbers &lt;- c(1, 5, 10, 15, 20)
+result &lt;- ifelse(numbers &gt; 10, <span class="string">"High"</span>, <span class="string">"Low"</span>)
+print(result)
+
+<span class="comment"># switch statement</span>
+grade &lt;- <span class="string">"A"</span>
+description &lt;- switch(grade,
+  A = <span class="string">"Excellent"</span>,
+  B = <span class="string">"Good"</span>,
+  C = <span class="string">"Average"</span>,
+  D = <span class="string">"Below Average"</span>,
+  F = <span class="string">"Fail"</span>,
+  <span class="string">"Unknown Grade"</span>
+)</code></pre>
+
+        <h3>Loops</h3>
+        <pre><code><span class="comment"># for loop</span>
+<span class="keyword">for</span> (i in 1:5) {
+  print(paste(<span class="string">"Iteration:"</span>, i))
+}
+
+<span class="comment"># for loop with vector</span>
+fruits &lt;- c(<span class="string">"apple"</span>, <span class="string">"banana"</span>, <span class="string">"cherry"</span>)
+<span class="keyword">for</span> (fruit in fruits) {
+  print(paste(<span class="string">"I like"</span>, fruit))
+}
+
+<span class="comment"># while loop</span>
+counter &lt;- 1
+<span class="keyword">while</span> (counter &lt;= 5) {
+  print(paste(<span class="string">"Counter:"</span>, counter))
+  counter &lt;- counter + 1
+}
+
+<span class="comment"># repeat loop with break</span>
+counter &lt;- 1
+<span class="keyword">repeat</span> {
+  print(paste(<span class="string">"Counter:"</span>, counter))
+  counter &lt;- counter + 1
+  <span class="keyword">if</span> (counter &gt; 5) {
+    <span class="keyword">break</span>
+  }
+}
+
+<span class="comment"># next statement (skip iteration)</span>
+<span class="keyword">for</span> (i in 1:10) {
+  <span class="keyword">if</span> (i %% 2 == 0) {
+    <span class="keyword">next</span>  <span class="comment"># Skip even numbers</span>
+  }
+  print(i)
+}</code></pre>
+
+        <h2 id="functions">Functions</h2>
+
+        <h3>Creating Functions</h3>
+        <pre><code><span class="comment"># Basic function</span>
+greet &lt;- <span class="keyword">function</span>(name) {
+  <span class="keyword">return</span>(paste(<span class="string">"Hello,"</span>, name))
+}
+
+<span class="comment"># Function with multiple parameters</span>
+calculate_bmi &lt;- <span class="keyword">function</span>(weight, height) {
+  bmi &lt;- weight / (height^2)
+  <span class="keyword">return</span>(bmi)
+}
+
+<span class="comment"># Function with default parameters</span>
+greet_with_title &lt;- <span class="keyword">function</span>(name, title = <span class="string">"Mr."</span>) {
+  <span class="keyword">return</span>(paste(<span class="string">"Hello,"</span>, title, name))
+}
+
+<span class="comment"># Function with multiple return values</span>
+calculate_stats &lt;- <span class="keyword">function</span>(numbers) {
+  result &lt;- list(
+    mean = mean(numbers),
+    median = median(numbers),
+    sd = sd(numbers),
+    min = min(numbers),
+    max = max(numbers)
+  )
+  <span class="keyword">return</span>(result)
+}
+
+<span class="comment"># Using functions</span>
+greet(<span class="string">"Alice"</span>)
+calculate_bmi(70, 1.75)
+greet_with_title(<span class="string">"Smith"</span>, <span class="string">"Dr."</span>)
+stats &lt;- calculate_stats(c(1, 2, 3, 4, 5))</code></pre>
+
+        <h3>Built-in Functions</h3>
+        <pre><code><span class="comment"># Mathematical functions</span>
+abs(-5)                                 <span class="comment"># Absolute value: 5</span>
+sqrt(16)                               <span class="comment"># Square root: 4</span>
+log(10)                                <span class="comment"># Natural logarithm</span>
+log10(100)                             <span class="comment"># Base-10 logarithm: 2</span>
+exp(1)                                 <span class="comment"># Exponential: e</span>
+round(3.14159, 2)                      <span class="comment"># Round to 2 decimals: 3.14</span>
+ceiling(3.2)                           <span class="comment"># Round up: 4</span>
+floor(3.8)                             <span class="comment"># Round down: 3</span>
+
+<span class="comment"># String functions</span>
+nchar(<span class="string">"Hello"</span>)                         <span class="comment"># String length: 5</span>
+toupper(<span class="string">"hello"</span>)                       <span class="comment"># Uppercase: "HELLO"</span>
+tolower(<span class="string">"HELLO"</span>)                       <span class="comment"># Lowercase: "hello"</span>
+substr(<span class="string">"Hello World"</span>, 1, 5)           <span class="comment"># Substring: "Hello"</span>
+paste(<span class="string">"Hello"</span>, <span class="string">"World"</span>)               <span class="comment"># Concatenate: "Hello World"</span>
+paste0(<span class="string">"Hello"</span>, <span class="string">"World"</span>)              <span class="comment"># Concatenate without space: "HelloWorld"</span>
+
+<span class="comment"># Statistical functions</span>
+mean(c(1, 2, 3, 4, 5))                <span class="comment"># Mean: 3</span>
+median(c(1, 2, 3, 4, 5))              <span class="comment"># Median: 3</span>
+sd(c(1, 2, 3, 4, 5))                  <span class="comment"># Standard deviation</span>
+var(c(1, 2, 3, 4, 5))                 <span class="comment"># Variance</span>
+min(c(1, 2, 3, 4, 5))                 <span class="comment"># Minimum: 1</span>
+max(c(1, 2, 3, 4, 5))                 <span class="comment"># Maximum: 5</span>
+range(c(1, 2, 3, 4, 5))               <span class="comment"># Range: c(1, 5)</span></code></pre>
+
+        <h2 id="data-visualization">Data Visualization</h2>
+
+        <h3>Base R Graphics</h3>
+        <pre><code><span class="comment"># Basic plots</span>
+x &lt;- 1:10
+y &lt;- x^2
+
+<span class="comment"># Scatter plot</span>
+plot(x, y, main = <span class="string">"Scatter Plot"</span>, xlab = <span class="string">"X values"</span
