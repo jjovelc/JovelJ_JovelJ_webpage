@@ -1150,3 +1150,31 @@ ul li a:hover {
   border: none;
   box-shadow: none;
 }
+
+.youtube-btn, .github-button, .ucvm_page-btn {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  background-color: transparent;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 15px;
+  border: 2px solid white;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: normal;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  margin-top: 10px;
+  box-shadow: none;
+}
+
+.youtube-btn { top: 20px; right: 20px; }
+.github-button { top: 80px; right: 20px; }
+.ucvm_page-btn { top: 140px; right: 20px; }
+
+.youtube-btn:hover, .github-button:hover, .ucvm_page-btn:hover {
+  background-color: white;
+  color: black;
+  border-color: red;
+}
