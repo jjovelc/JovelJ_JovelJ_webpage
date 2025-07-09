@@ -162,6 +162,7 @@ body, html {
   color: white;
 }
 
+/*
 .youtube-btn {
   position: absolute;
   top: 20px; 
@@ -186,18 +187,6 @@ body, html {
   border-color: red;
   border-bottom-width: 5px;
   border-style:double;
-}
-
-.youtube-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-}
-
-.youtube-logo {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
 }
 
 .github-button {
@@ -226,13 +215,6 @@ body, html {
   border-bottom-width: 5px;
 }
 
-.github-logo {
-  width: 24px;
-  height: 24px;
-  margin-right: 10px;
-}
-
-
 .ucvm_page-btn {
   position: absolute;
   top: 140px; 
@@ -258,6 +240,20 @@ body, html {
   border-style:double;
   border-bottom-width: 5px;
 }
+*/
+
+.youtube-logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.github-logo {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
 
 .ucvm_page-logo {
   width: 24px;
