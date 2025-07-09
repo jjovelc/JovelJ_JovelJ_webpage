@@ -1132,9 +1132,9 @@ ul li a:hover {
 }
 
 .aboutme-btn:hover {
-  background-color: white;
+  background-color: lightgray;
   color: black;
-  border-color: red;
+  border-color: #03a8e1;
 }
 
 .aboutme-logo {
@@ -1170,7 +1170,7 @@ ul li a:hover {
 .ucvm_page-btn { top: 140px; right: 20px; }
 
 .youtube-btn:hover, .github-button:hover, .ucvm_page-btn:hover {
-  background-color: white;
+  background-color: lightgray;
   color: black;
-  border-color: red;
+  border-color: #03a8e1;
 }
