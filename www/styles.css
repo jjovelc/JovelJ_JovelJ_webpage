@@ -1122,7 +1122,7 @@ ul li a:hover {
   color: white;
   padding: 10px 20px;
   border-radius: 25px;
-  border: 2px solid white;
+  border: 2px solid lightgrey;
   font-family: Arial, sans-serif;
   font-size: 16px;
   font-weight: normal;
@@ -1156,7 +1156,7 @@ ul li a:hover {
   color: white;
   padding: 10px 20px;
   border-radius: 25px;
-  border: 2px solid white;
+  border: 2px solid lightgrey;
   font-family: Arial, sans-serif;
   font-size: 16px;
   font-weight: normal;
