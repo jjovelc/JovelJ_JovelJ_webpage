@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="www/styles.css">
+    <link rel="icon" href="images/JJ_Portrait.jpg" type="image/jpeg">
+    <title>Photo Visor - Juan Jovel</title>
+    <style>
+        .photo-visor-container {
+            max-width: 1200px;
+            margin: 80px auto 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-visor-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .photo-visor-header h1 {
+            color: #081f44;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .photo-visor-header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .photo-display {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            background: #f5f5f5;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .photo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .photo-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .photo-counter {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .photo-filename {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        .navigation-arrows {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .nav-arrow {
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-arrow:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+
+        .nav-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .control-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .control-btn {
+            background: #081f44;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-btn:hover {
+            background: #0d2b5a;
+            transform: translateY(-2px);
+        }
+
+        .control-btn:active {
+            transform: translateY(0);
+        }
+
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px 0;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .thumbnail {
+            flex-shrink: 0;
+            width: 80px;
+            height: 60px;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .thumbnail.active {
+            border-color: #081f44;
+            transform: scale(1.05);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.1);
+        }
+
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .photo-visor-container {
+                margin: 60px 10px 20px;
+                padding: 15px;
+            }
+
+            .photo-display {
+                height: 400px;
+            }
+
+            .navigation-arrows {
+                padding: 0 10px;
+            }
+
+            .nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .control-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .control-btn {
+                width: 100%;
+                max-width: 200px;
+            }
+
+            .thumbnail {
+                width: 60px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="about.html">About</a>
+                <a href="software.html">Software</a>
+                <a href="publications.html">Publications</a>
+                <a href="blog.html">Blog</a>
+                <a href="photo-visor.html" class="active">Photo Visor</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="photo-visor-container">
+        <div class="photo-visor-header">
+            <h1>Photo Visor</h1>
+            <p>Browse through photos from El Salvador 2025</p>
+        </div>
+
+        <div class="control-buttons">
+            <button class="control-btn" onclick="openFolder()">
+                📁 Open Folder
+            </button>
+            <button class="control-btn" onclick="downloadCurrentPhoto()">
+                ⬇️ Download Photo
+            </button>
+        </div>
+
+        <div class="photo-display">
+            <div class="loading" id="loading">Loading photos...</div>
+            <img id="current-photo" class="photo-image" style="display: none;" alt="Current photo">
+            
+            <div class="navigation-arrows">
+                <button class="nav-arrow" id="prev-btn" onclick="previousPhoto()" disabled>‹</button>
+                <button class="nav-arrow" id="next-btn" onclick="nextPhoto()" disabled>›</button>
+            </div>
+
+            <div class="photo-info" id="photo-info" style="display: none;">
+                <div class="photo-counter" id="photo-counter"></div>
+                <div class="photo-filename" id="photo-filename"></div>
+            </div>
+        </div>
+
+        <div class="thumbnail-container" id="thumbnail-container">
+            <!-- Thumbnails will be generated here -->
+        </div>
+    </div>
+
+    <script>
+        // Photo data - El Salvador 2025 photos
+        const photos = [
+            { filename: 'cielo_despejado.jpeg', path: 'photos/ElSalvador2025/cielo_despejado.jpeg' },
+            { filename: 'con_Esmeralda_Valdiviezo.jpg', path: 'photos/ElSalvador2025/con_Esmeralda_Valdiviezo.jpg' },
+            { filename: 'con_Sombrero-3.jpg', path: 'photos/ElSalvador2025/con_Sombrero-3.jpg' },
+            { filename: 'con_Sombrero1.jpg', path: 'photos/ElSalvador2025/con_Sombrero1.jpg' },
+            { filename: 'conDonTonho.jpg', path: 'photos/ElSalvador2025/conDonTonho.jpg' },
+            { filename: 'cuma.jpg', path: 'photos/ElSalvador2025/cuma.jpg' },
+            { filename: 'despsdida_conFamilia.jpeg', path: 'photos/ElSalvador2025/despsdida_conFamilia.jpeg' },
+            { filename: 'diego_manejando.jpeg', path: 'photos/ElSalvador2025/diego_manejando.jpeg' },
+            { filename: 'El_Churrasco.jpg', path: 'photos/ElSalvador2025/El_Churrasco.jpg' },
+            { filename: 'en_conferencia.jpg', path: 'photos/ElSalvador2025/en_conferencia.jpg' },
+            { filename: 'en_El_Churrasco.jpg', path: 'photos/ElSalvador2025/en_El_Churrasco.jpg' },
+            { filename: 'in_moto1.jpg', path: 'photos/ElSalvador2025/in_moto1.jpg' },
+            { filename: 'Juan_barcelona.jpg', path: 'photos/ElSalvador2025/Juan_barcelona.jpg' },
+            { filename: 'juan_real_madrid.jpg', path: 'photos/ElSalvador2025/juan_real_madrid.jpg' },
+            { filename: 'on-the-hammock.jpeg', path: 'photos/ElSalvador2025/on-the-hammock.jpeg' },
+            { filename: 'puente_lempa.jpeg', path: 'photos/ElSalvador2025/puente_lempa.jpeg' },
+            { filename: 'running_Edmonton.jpeg', path: 'photos/ElSalvador2025/running_Edmonton.jpeg' },
+            { filename: 'sanGerardo_2.jpeg', path: 'photos/ElSalvador2025/sanGerardo_2.jpeg' },
+            { filename: 'SanGerardo.jpeg', path: 'photos/ElSalvador2025/SanGerardo.jpeg' },
+            { filename: 'SG_desde_Cerro_LaCruz.jpeg', path: 'photos/ElSalvador2025/SG_desde_Cerro_LaCruz.jpeg' },
+            { filename: 'Tumba_monsenhor_Romero.jpg', path: 'photos/ElSalvador2025/Tumba_monsenhor_Romero.jpg' },
+            { filename: 'TumbaMonsRomero.jpeg', path: 'photos/ElSalvador2025/TumbaMonsRomero.jpeg' }
+        ];
+
+        let currentPhotoIndex = 0;
+        let currentPhoto = null;
+
+        // Initialize the photo visor
+        function initPhotoVisor() {
+            createThumbnails();
+            loadPhoto(0);
+        }
+
+        // Create thumbnail navigation
+        function createThumbnails() {
+            const container = document.getElementById('thumbnail-container');
+            container.innerHTML = '';
+
+            photos.forEach((photo, index) => {
+                const thumbnail = document.createElement('div');
+                thumbnail.className = 'thumbnail';
+                thumbnail.onclick = () => loadPhoto(index);
+
+                const img = document.createElement('img');
+                img.src = photo.path;
+                img.alt = photo.filename;
+                img.onerror = () => {
+                    thumbnail.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100%; color: #999; font-size: 0.8em;">Error</div>';
+                };
+
+                thumbnail.appendChild(img);
+                container.appendChild(thumbnail);
+            });
+        }
+
+        // Load a specific photo
+        function loadPhoto(index) {
+            if (index < 0 || index >= photos.length) return;
+
+            currentPhotoIndex = index;
+            currentPhoto = photos[index];
+
+            const photoImg = document.getElementById('current-photo');
+            const loading = document.getElementById('loading');
+            const photoInfo = document.getElementById('photo-info');
+            const photoCounter = document.getElementById('photo-counter');
+            const photoFilename = document.getElementById('photo-filename');
+
+            // Show loading
+            loading.style.display = 'flex';
+            photoImg.style.display = 'none';
+            photoInfo.style.display = 'none';
+
+            // Load the image
+            photoImg.onload = () => {
+                loading.style.display = 'none';
+                photoImg.style.display = 'block';
+                photoInfo.style.display = 'block';
+                updateNavigation();
+                updateThumbnails();
+            };
+
+            photoImg.onerror = () => {
+                loading.innerHTML = 'Error loading image';
+                loading.style.display = 'flex';
+                photoImg.style.display = 'none';
+                photoInfo.style.display = 'none';
+            };
+
+            photoImg.src = currentPhoto.path;
+            photoCounter.textContent = `${index + 1} of ${photos.length}`;
+            photoFilename.textContent = currentPhoto.filename;
+        }
+
+        // Update navigation buttons
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            prevBtn.disabled = currentPhotoIndex === 0;
+            nextBtn.disabled = currentPhotoIndex === photos.length - 1;
+        }
+
+        // Update thumbnail selection
+        function updateThumbnails() {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach((thumb, index) => {
+                if (index === currentPhotoIndex) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+
+        // Navigation functions
+        function previousPhoto() {
+            if (currentPhotoIndex > 0) {
+                loadPhoto(currentPhotoIndex - 1);
+            }
+        }
+
+        function nextPhoto() {
+            if (currentPhotoIndex < photos.length - 1) {
+                loadPhoto(currentPhotoIndex + 1);
+            }
+        }
+
+        // Open folder function
+        function openFolder() {
+            // This would typically open the folder in the file explorer
+            // For web browsers, we can show an alert with the folder path
+            alert('Folder path: /Users/juanjovel/Library/CloudStorage/OneDrive-UniversityofCalgary/jj/UofC/git_repos/JovelJ_JovelJ_webpage/photos/ElSalvador2025\n\nNote: In a web browser, you cannot directly open folders for security reasons.');
+        }
+
+        // Download current photo
+        function downloadCurrentPhoto() {
+            if (!currentPhoto) return;
+
+            const link = document.createElement('a');
+            link.href = currentPhoto.path;
+            link.download = currentPhoto.filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            switch(e.key) {
+                case 'ArrowLeft':
+                    previousPhoto();
+                    break;
+                case 'ArrowRight':
+                    nextPhoto();
+                    break;
+                case ' ':
+                    e.preventDefault();
+                    nextPhoto();
+                    break;
+            }
+        });
+
+        // Initialize when page loads
+        window.addEventListener('load', initPhotoVisor);
+    </script>
+</body>
+</html> 
