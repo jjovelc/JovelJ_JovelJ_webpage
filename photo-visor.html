@@ -283,7 +283,7 @@
     <div class="photo-visor-container">
         <div class="photo-visor-header">
             <h1>Photo Visor</h1>
-            <p>Browse through your photo folders</p>
+            <p>Browse through photo folders on the left</p>
         </div>
         <div class="photo-visor-layout">
             <div class="side-explorer">
@@ -294,9 +294,6 @@
             </div>
             <div style="flex:1; min-width:0;">
                 <div class="control-buttons">
-                    <button class="control-btn" onclick="showFolderPath()">
-                        📁 Show Folder Path
-                    </button>
                     <button class="control-btn" onclick="downloadCurrentPhoto()">
                         ⬇️ Download Photo
                     </button>
@@ -513,12 +510,6 @@
             if (currentPhotoIndex < photos.length - 1) {
                 loadPhoto(currentPhotoIndex + 1);
             }
-        }
-
-        // Open folder function
-        function showFolderPath() {
-            const folder = photoFolders[currentFolderIndex];
-            alert(`Folder path: ${folder.path}\n\nNote: In a web browser, you cannot directly open folders for security reasons.`);
         }
 
         // Download current photo
