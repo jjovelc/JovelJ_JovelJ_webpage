@@ -5,33 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="www/styles.css">
     <link rel="icon" href="images/JJ_Portrait.jpg" type="image/jpeg">
-    <title>Photo Visor - Juan Jovel</title>
+    <title>Photo Browser - Juan Jovel</title>
     <style>
-        .photo-visor-container {
+        .photo-browser-container {
             max-width: 1200px;
             margin: 80px auto 20px;
-            padding: 10px;
+            padding: 20px;
             background: white;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-
-        .photo-visor-header {
+        .photo-browser-header {
             text-align: center;
             margin-bottom: 30px;
         }
-
-        .photo-visor-header h1 {
-            color: #081f44;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .photo-visor-header p {
+        .photo-browser-header p {
             color: #666;
             font-size: 1.1em;
         }
-
         .photo-display {
             position: relative;
             width: 100%;
@@ -180,7 +171,7 @@
             color: #666;
         }
 
-        .photo-visor-layout {
+        .photo-browser-layout {
             display: flex;
             gap: 30px;
         }
@@ -218,7 +209,7 @@
             color: #2092fd;
         }
         @media (max-width: 900px) {
-            .photo-visor-layout {
+            .photo-browser-layout {
                 flex-direction: column;
             }
             .side-explorer {
@@ -228,7 +219,7 @@
             }
         }
         @media (max-width: 768px) {
-            .photo-visor-container {
+            .photo-browser-container {
                 margin: 60px 10px 20px;
                 padding: 15px;
             }
@@ -274,15 +265,18 @@
                 <a href="software.html">Software</a>
                 <a href="publications.html">Publications</a>
                 <a href="blog.html">Blog</a>
-                <a href="photo-visor.html" class="active">Photo Visor</a>
+                <a href="photo-browser.html" class="active">Photo Browser</a>
                 <a href="contact.html">Contact</a>
             </div>
         </div>
     </div>
 
-    <div class="photo-visor-container">
+    <div class="photo-browser-container">
+        <div class="photo-browser-header">
+            <p>Browse through photo folders on the left</p>
+        </div>
 
-        <div class="photo-visor-layout">
+        <div class="photo-browser-layout">
             <div class="side-explorer">
                 <div class="side-explorer-title">Photo Folders</div>
                 <ul class="folder-list" id="folder-list">
@@ -330,6 +324,7 @@
                     'cuma.jpg',
                     'despsdida_conFamilia.jpeg',
                     'diego_manejando.jpeg',
+                    'El_Churrasco.jpg',
                     'en_conferencia.jpg',
                     'en_El_Churrasco.jpg',
                     'in_moto1.jpg',
@@ -341,6 +336,7 @@
                     'sanGerardo_2.jpeg',
                     'SanGerardo.jpeg',
                     'SG_desde_Cerro_LaCruz.jpeg',
+                    'Tumba_monsenhor_Romero.jpg',
                     'TumbaMonsRomero.jpeg'
                 ]
             },
