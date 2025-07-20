@@ -1,11 +1,143 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="www/styles.css">
     <link rel="icon" href="images/JJ_Portrait.jpg" type="image/jpeg">
-    <title>About</title>
+    <title>About - Juan Jovel</title>
+    <style>
+      .about-hero {
+        background: linear-gradient(135deg, #081f44 0%, #1d5ec5 100%);
+        color: white;
+        padding: 80px 20px 60px;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      
+      .about-hero h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+        font-weight: 300;
+      }
+      
+      .about-hero p {
+        font-size: 1.3em;
+        max-width: 600px;
+        margin: 0 auto;
+        opacity: 0.9;
+        line-height: 1.6;
+      }
+      
+      .about-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      
+      .about-section {
+        background: white;
+        border-radius: 12px;
+        padding: 40px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-left: 4px solid #081f44;
+      }
+      
+      .about-section h2 {
+        color: #081f44;
+        font-size: 2em;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+      
+      .about-section p {
+        font-size: 1.1em;
+        line-height: 1.8;
+        color: #333;
+        margin-bottom: 20px;
+      }
+      
+      .about-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+      
+      .about-card {
+        background: #f8f9fa;
+        border-radius: 10px;
+        padding: 30px;
+        border-top: 4px solid #1d5ec5;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .about-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      }
+      
+      .about-card h3 {
+        color: #081f44;
+        font-size: 1.4em;
+        margin-bottom: 15px;
+        font-weight: 600;
+      }
+      
+      .about-card p {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 0;
+      }
+      
+      .highlight-box {
+        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        border-radius: 10px;
+        padding: 25px;
+        margin: 30px 0;
+        border-left: 4px solid #1976d2;
+      }
+      
+      .highlight-box h3 {
+        color: #1565c0;
+        margin-bottom: 15px;
+        font-size: 1.3em;
+      }
+      
+      .highlight-box p {
+        color: #424242;
+        margin-bottom: 0;
+      }
+      
+      @media (max-width: 768px) {
+        .about-hero h1 {
+          font-size: 2.2em;
+        }
+        
+        .about-hero p {
+          font-size: 1.1em;
+        }
+        
+        .about-section {
+          padding: 25px;
+          margin-bottom: 20px;
+        }
+        
+        .about-section h2 {
+          font-size: 1.6em;
+        }
+        
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        
+        .about-card {
+          padding: 20px;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="header">
@@ -23,19 +155,43 @@
           </div>
       </div>
     </div>
-  
-      <p  class="subtitle-blue">Purpose of this page</p>
-      <p class="main-paragraph">This is a space to share my curiosity in the area of informatics. Nowadays, informatics has become a prominent field due to the generation of large datasets that require sophisticated and powerful algorithms for their analysis. Bioinformatics is a subfield of informatics that focuses on the analysis of biological data, such as DNA sequences, protein structures, and gene expression profiles.
-      My goal is to provide a platform where I can share my knowledge and experience in the field of bioinformatics. I will be sharing my thoughts on the latest trends in the field, as well as my own research and projects. I hope that this page will be a valuable resource for anyone interested in bioinformatics and informatics in general. 
-      <br><br>
-      Bioinformatics is a rapidly evolving field that is revolutionizing the way we understand and analyze biological data. It combines the power of computer science, statistics, and biology to develop tools and algorithms for the analysis of biological data. Bioinformatics has a wide range of applications, from understanding the genetic basis of diseases to designing new drugs and therapies. By sharing my knowledge and experience in bioinformatics, I hope to inspire others to explore this exciting field and contribute to the advancement of science and medicine. 
-      <br><br>
-      Milestone achievements in bioinformatics include the Human Genome Project, which mapped the entire human genome, and the development of next-generation sequencing technologies, which have revolutionized the field of genomics. These advances have paved the way for personalized medicine, where treatments are tailored to an individual's genetic makeup. Bioinformatics is also playing a key role in the fight against infectious diseases, such as COVID-19, by enabling the rapid analysis of viral genomes and the development of diagnostic tests and vaccines. 
-      <br><br>
-      On the Ecology and Evolutionary Biology side, bioinformatics is used to study the diversity and evolution of species, as well as their interactions with the environment. By analyzing DNA sequences and other biological data, researchers can reconstruct the evolutionary history of species, identify genes that are important for adaptation and speciation, and understand how ecosystems are changing over time. Bioinformatics is also used to study the impact of human activities on the environment, such as deforestation, pollution, and climate change. 
-      By combining field observations with computational analyses, researchers can develop strategies for conserving biodiversity and mitigating the effects of environmental change.
-      <br><br>
-      </p>
-  </div>
+
+    <div class="about-hero">
+      <h1>About Juan Jovel</h1>
+      <p>Exploring the intersection of bioinformatics, informatics, and evolutionary biology to advance our understanding of life through computational analysis.</p>
+    </div>
+
+    <div class="about-container">
+      <div class="about-section">
+        <h2>Purpose of this Page</h2>
+        <p>This is a space to share my curiosity in the area of informatics. Nowadays, informatics has become a prominent field due to the generation of large datasets that require sophisticated and powerful algorithms for their analysis. Bioinformatics is a subfield of informatics that focuses on the analysis of biological data, such as DNA sequences, protein structures, and gene expression profiles.</p>
+        
+        <p>My goal is to provide a platform where I can share my knowledge and experience in the field of bioinformatics. I will be sharing my thoughts on the latest trends in the field, as well as my own research and projects. I hope that this page will be a valuable resource for anyone interested in bioinformatics and informatics in general.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>Bioinformatics Revolution</h3>
+          <p>Bioinformatics is a rapidly evolving field that is revolutionizing the way we understand and analyze biological data. It combines the power of computer science, statistics, and biology to develop tools and algorithms for the analysis of biological data.</p>
+        </div>
+        
+        <div class="about-card">
+          <h3>Wide Range of Applications</h3>
+          <p>Bioinformatics has a wide range of applications, from understanding the genetic basis of diseases to designing new drugs and therapies. By sharing my knowledge and experience in bioinformatics, I hope to inspire others to explore this exciting field.</p>
+        </div>
+      </div>
+
+      <div class="highlight-box">
+        <h3>Milestone Achievements</h3>
+        <p>Milestone achievements in bioinformatics include the Human Genome Project, which mapped the entire human genome, and the development of next-generation sequencing technologies, which have revolutionized the field of genomics. These advances have paved the way for personalized medicine, where treatments are tailored to an individual's genetic makeup.</p>
+      </div>
+
+      <div class="about-section">
+        <h2>Ecology and Evolutionary Biology</h2>
+        <p>On the Ecology and Evolutionary Biology side, bioinformatics is used to study the diversity and evolution of species, as well as their interactions with the environment. By analyzing DNA sequences and other biological data, researchers can reconstruct the evolutionary history of species, identify genes that are important for adaptation and speciation, and understand how ecosystems are changing over time.</p>
+        
+        <p>Bioinformatics is also used to study the impact of human activities on the environment, such as deforestation, pollution, and climate change. By combining field observations with computational analyses, researchers can develop strategies for conserving biodiversity and mitigating the effects of environmental change.</p>
+      </div>
+    </div>
   </body>
 </html>
