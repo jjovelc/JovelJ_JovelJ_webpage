@@ -120,7 +120,7 @@ body, html {
 
 .banner {
   position: relative;
-  background-image: url('../images/banner_7_discrete.jpg');
+  background-image: url('../images/banner_7_discrete.jpg?v=2');
   background-size: cover;
   background-position: center;
   height: 700px;
