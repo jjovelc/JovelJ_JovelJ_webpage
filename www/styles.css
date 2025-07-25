@@ -2,12 +2,17 @@
 /* Styles for screens smaller than 768px (typical mobile devices) */
 @media (max-width: 768px) {
   .banner {
-    height: 300px; /* Adjust banner height for mobile */
+    height: 400px; /* Increase banner height for mobile */
+    padding: 20px 10px; /* Add padding for better spacing */
+    background-size: cover;
+    background-position: center;
   }
 
   .description {
-    font-size: 1.5em; /* Adjust font size for mobile */
-    margin: 50px 0 0 0;
+    font-size: 1.2em; /* Reduce font size for mobile */
+    margin: 30px 0 0 0;
+    text-align: center;
+    padding: 0 10px;
   }
 
   .main-paragraph {
@@ -22,12 +27,51 @@
 
   .youtube-btn, .github-button, .ucvm_page-btn {
     position: static; /* Stack buttons vertically */
-    margin: 10px auto; /* Center buttons */
+    margin: 8px auto; /* Center buttons with smaller margin */
     display: block;
+    width: 80%; /* Limit button width */
+    max-width: 200px;
+    font-size: 14px; /* Smaller font for buttons */
+    padding: 8px 15px; /* Smaller padding */
+  }
+
+  .youtube-logo, .github-logo, .ucvm_page-logo {
+    width: 16px; /* Smaller logos */
+    height: 16px;
+  }
+
+  .aboutme-btn {
+    position: static !important; /* Override absolute positioning */
+    margin: 8px auto;
+    display: block;
+    width: 80%;
+    max-width: 200px;
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  .aboutme-logo {
+    width: 16px;
+    height: 16px;
   }
 
   .grid-container {
     grid-template-columns: 1fr; /* Single column layout for mobile */
+    gap: 15px; /* Reduce gap */
+    margin-left: 5px; /* Reduce left margin */
+  }
+
+  .grid-item {
+    margin-left: 10px; /* Reduce left margin */
+  }
+
+  .thumbnail img {
+    max-width: 120px; /* Smaller thumbnails */
+    height: 80px;
+  }
+
+  .thumbnail-title h3 {
+    font-size: 14px; /* Smaller title font */
   }
 
   .quote-box, .quote-box-illustrator {
@@ -45,28 +89,83 @@
     width: 90%; /* Full width for mobile */
     margin: 10px auto; /* Center boxes */
   }
+
+  /* Navigation improvements */
+  .nav {
+    padding: 8px 10px; /* Reduce padding */
+  }
+
+  .nav a {
+    font-size: 12px; /* Smaller font for nav */
+    margin: 0 5px; /* Reduce margin */
+    padding: 5px 8px; /* Add padding */
+  }
 }
 
 /* Styles for screens smaller than 480px (very small mobile devices) */
 @media (max-width: 480px) {
   .banner {
-    height: 200px; /* Further adjust banner height */
+    height: 350px; /* Slightly smaller height */
+    padding: 15px 5px;
   }
 
   .description {
-    font-size: 1.2em; /* Further adjust font size */
+    font-size: 1em; /* Even smaller font */
+    margin: 20px 0 0 0;
   }
 
   .main-paragraph {
     font-size: 14px; /* Further adjust font size */
+    width: 95%;
+    margin-left: 2.5%;
   }
 
   .contact-format {
     margin: 0 0.5cm; /* Further adjust margins */
   }
+
+  .youtube-btn, .github-button, .ucvm_page-btn, .aboutme-btn {
+    width: 90%;
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .nav a {
+    font-size: 11px;
+    margin: 0 2px;
+    padding: 4px 6px;
+  }
+
+  .grid-container {
+    margin-left: 2px;
+  }
+
+  .grid-item {
+    margin-left: 5px;
+  }
+
+  .thumbnail img {
+    max-width: 100px;
+    height: 70px;
+  }
 }
 
-/* Ends mobile deploment enhacement code */
+/* Extra small devices */
+@media (max-width: 360px) {
+  .banner {
+    height: 300px;
+  }
+
+  .description {
+    font-size: 0.9em;
+  }
+
+  .nav a {
+    font-size: 10px;
+    margin: 0 1px;
+    padding: 3px 4px;
+  }
+}
 
 body, html {
   height: 100%;
