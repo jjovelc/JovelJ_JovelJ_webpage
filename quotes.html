@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="www/styles.css">
+    <link rel="icon" href="images/JJ_Portrait.jpg" type="image/jpeg">
+    <title>Quotes - Juan Jovel</title>
+    <style>
+        .quotes-container {
+            display: flex;
+            min-height: 100vh;
+            margin-top: 50px;
+        }
+
+        .quotes-sidebar {
+            width: 280px;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #4a90e2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 2px, transparent 2px),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.1) 3px, transparent 3px),
+                radial-gradient(circle at 40% 80%, rgba(255,255,255,0.08) 1px, transparent 1px),
+                radial-gradient(circle at 90% 20%, rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 50px 50px, 80px 80px, 30px 30px, 40px 40px;
+        }
+
+        .sidebar-content {
+            position: relative;
+            z-index: 2;
+            padding: 40px 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .sidebar-title {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .sidebar-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .decorative-line {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            margin: 30px auto;
+            border-radius: 2px;
+        }
+
+        .quotes-main {
+            flex: 1;
+            background: white;
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .quote-item {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: #fafafa;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 4px solid #4a90e2;
+            position: relative;
+        }
+
+        .quote-text {
+            font-size: 1.4em;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+            font-style: italic;
+            position: relative;
+        }
+
+        .quote-text::before {
+            content: '"';
+            font-size: 3em;
+            color: #4a90e2;
+            position: absolute;
+            top: -10px;
+            left: -15px;
+            font-family: Georgia, serif;
+        }
+
+        .quote-author {
+            font-size: 1.1em;
+            color: #666;
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .flower-separator {
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .flower-separator::before {
+            content: '🌸';
+            font-size: 2em;
+            display: block;
+            margin: 0 auto;
+            animation: gentle-float 3s ease-in-out infinite;
+        }
+
+        .flower-separator::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #ddd, transparent);
+            z-index: -1;
+        }
+
+        @keyframes gentle-float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .page-title {
+            font-size: 2.2em;
+            color: #1e3c72;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .quotes-container {
+                flex-direction: column;
+            }
+            
+            .quotes-sidebar {
+                width: 100%;
+                min-height: 200px;
+            }
+            
+            .quotes-main {
+                padding: 20px;
+            }
+            
+            .quote-item {
+                padding: 20px;
+                margin-bottom: 30px;
+            }
+            
+            .quote-text {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="about.html">About</a>
+                <a href="software.html">Software</a>
+                <a href="publications.html">Publications</a>
+                <a href="blog.html">Blog</a>
+                <a href="tutorials.html">Tutorials</a>
+                <a href="quotes.html" class="active">Quotes</a>
+                <a href="photo-browser.html">PhotoBrowser</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="quotes-container">
+        <div class="quotes-sidebar">
+            <div class="sidebar-decoration"></div>
+            <div class="sidebar-content">
+                <h1 class="sidebar-title">Quotes</h1>
+                <div class="decorative-line"></div>
+                <p class="sidebar-subtitle">Words that inspire, motivate, and resonate with my journey in bioinformatics and life.</p>
+                <div class="decorative-line"></div>
+            </div>
+        </div>
+
+        <div class="quotes-main">
+            <h2 class="page-title">Inspirational Quotes</h2>
+            
+            <div class="quote-item">
+                <div class="quote-text">
+                    Either you are growing, or you're slowly dying
+                </div>
+                <div class="quote-author">— Sam Altman</div>
+            </div>
+
+            <div class="flower-separator"></div>
+
+            <!-- More quotes will be added here -->
+        </div>
+    </div>
+</body>
+</html> 
