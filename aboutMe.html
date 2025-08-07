@@ -1,46 +1,384 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="www/styles.css">
-    <title>About</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>About Me - Juan Jovel</title>
     <style>
-      .portrait {
-        position: absolute;
-        left: 1.5in;
-        top: 1.5in;
-        height: 2.5in; /* Changed from 1.5in to 2.5in */
-        width: auto; /* Maintains aspect ratio */
-        object-fit: cover; /* Ensures proper scaling */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
-      
-      .portrait-caption {
-        position: absolute;
-        left: 1.5in;
-        top: 4.2in; /* Position below the 2.5in tall image + small gap */
-        font-size: 20px;
-        font-style: normal;
-        color: #666;
+
+      body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 120px 0 80px;
         text-align: center;
-        width: auto;
+        position: relative;
+        overflow: hidden;
       }
-      
-      /* Add margin to content to avoid overlap with portrait */
-      .content {
-        margin-left: 4in; /* Adjust based on portrait width + spacing */
-        margin-top: 1.5in;
+
+      .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        opacity: 0.3;
       }
-      
-      /* Alternative: if you want text to wrap around the image */
-      .portrait-float {
-        float: left;
-        margin: 1.5in 0 0 1.5in;
-        height: 2.5in;
-        width: auto;
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .hero-portrait {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 6px solid rgba(255, 255, 255, 0.3);
+        margin: 0 auto 30px;
         object-fit: cover;
-        shape-outside: margin-box; /* For better text wrapping */
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .hero-portrait:hover {
+        transform: scale(1.05);
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-bottom: 20px;
+        opacity: 0.9;
+      }
+
+      .hero-tags {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+
+      .hero-tag {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 8px 16px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+
+      /* Main Content */
+      .main-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+      }
+
+      .content-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+
+      .content-card {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .content-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+      }
+
+      .content-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .card-title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .card-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .card-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #4a5568;
+      }
+
+      .card-content p {
+        margin-bottom: 20px;
+      }
+
+      .card-content p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Skills Section */
+      .skills-section {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        margin-bottom: 60px;
+      }
+
+      .skills-title {
+        font-size: 2.2rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+      }
+
+      .skill-category {
+        background: #f7fafc;
+        border-radius: 15px;
+        padding: 25px;
+        border-left: 4px solid #667eea;
+      }
+
+      .skill-category h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .skill-list {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .skill-item {
+        background: white;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        color: #4a5568;
+        border: 1px solid #e2e8f0;
+        transition: all 0.3s ease;
+      }
+
+      .skill-item:hover {
+        background: #667eea;
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Timeline Section */
+      .timeline-section {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .timeline-title {
+        font-size: 2.2rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 40px;
+        text-align: center;
+      }
+
+      .timeline {
+        position: relative;
+        padding-left: 30px;
+      }
+
+      .timeline::before {
+        content: '';
+        position: absolute;
+        left: 15px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, #667eea, #764ba2);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 40px;
+        padding-left: 30px;
+      }
+
+      .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: -22px;
+        top: 10px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #667eea;
+        border: 3px solid white;
+        box-shadow: 0 0 0 3px #667eea;
+      }
+
+      .timeline-year {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #667eea;
+        margin-bottom: 8px;
+      }
+
+      .timeline-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #2d3748;
+        margin-bottom: 5px;
+      }
+
+      .timeline-subtitle {
+        font-size: 1rem;
+        color: #4a5568;
+        font-style: italic;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.2rem;
+        }
+
+        .content-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .content-card {
+          padding: 30px;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .main-container {
+          padding: 40px 15px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .hero-portrait {
+          width: 150px;
+          height: 150px;
+        }
+
+        .content-card {
+          padding: 25px;
+        }
+
+        .card-title {
+          font-size: 1.5rem;
+        }
+      }
+
+      /* Animation */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .content-card, .skills-section, .timeline-section {
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      .content-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .skills-section {
+        animation-delay: 0.4s;
+      }
+
+      .timeline-section {
+        animation-delay: 0.6s;
       }
     </style>
   </head>
@@ -59,26 +397,135 @@
           </div>
       </div>
     </div>
-  
-    <img src="./images/JJ_Portrait.jpg" alt="Juan Jovel Portrait" class="portrait">
-    <div class="portrait-caption">Juan Jovel, PhD</div>
-    
-    <div class="content">
-      <p class="subtitle-blue">Biosketch</p>
-      <p class="main-paragraph">I am a bioinformatician and molecular biologist with over two decades of experience in computational biology, genomics, and infectious disease research. I am currently based at the Faculty of Veterinary Medicine at the University of Calgary, where he leads bioinformatics efforts to support high-throughput sequencing and multi-omics studies in multiple organisms.
-      <br><br>
-      I earned a Ph.D. in Molecular Biology and Virology from the University of Stuttgart, Germany, where I graduated magna cum laude for my work on complex plant virus interactions. I also hold an M.Sc. in Plant Pathology from CATIE, Costa Rica, and an undergraduate degree in Agricultural Engineering from the Universidad Nacional Agraria in Nicaragua.
-      <br><br>
-      With a professional trajectory spanning North and Central America as well as Europe, Dr. Jovel (me) has held research and academic appointments at prestigious institutions including the University of California Riverside, The Scripps Research Institute, and Pacific Agriculture and Agri-Food Canada. At the University of Alberta, he served as Manager and Lead Bioinformatician at The Applied Genomics Core (TAGC), and as a Research Associate in the Department of Medicine, where he contributed to single-cell and metagenomic studies in oncology and liver diseases.
-      <br><br>
-      An experienced educator, Dr. Jovel has developed and taught bioinformatics courses for graduate students and researchers, including hands-on workshops and university-level modules in computational transcriptomics and bacterial genome analysis. His teaching philosophy centers on active learning through practical application, and his courses have received high praise from participants.
-      By combining field observations with computational analyses, researchers can develop strategies for conserving biodiversity and mitigating the effects of environmental change.
-      <br><br>
-      Fluent in English and Spanish, with working knowledge of German, Dr. Jovel is also proficient in multiple programming languages including Python, R, Perl, and C++, as well as web development tools. He has delivered invited lectures internationally, addressing topics ranging from bioinformatics in the 21st century to innovations in genome assembly and pathogen detection.
-      <br><br>
-      Dr. Jovel's work reflects a lifelong commitment to interdisciplinary science and education, bridging molecular biology and computational approaches to advance research in genomics, transcriptomics, metagenomics, and beyond.
-      <br><br>
-      </p>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <img src="./images/JJ_Portrait.jpg" alt="Juan Jovel Portrait" class="hero-portrait">
+        <h1 class="hero-title">Juan Jovel, PhD</h1>
+        <p class="hero-subtitle">Bioinformatician & Molecular Biologist</p>
+        <div class="hero-tags">
+          <span class="hero-tag">Genomics</span>
+          <span class="hero-tag">Bioinformatics</span>
+          <span class="hero-tag">Research</span>
+          <span class="hero-tag">Education</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-container">
+      <!-- About and Education Grid -->
+      <div class="content-grid">
+        <div class="content-card">
+          <h2 class="card-title">
+            <div class="card-icon">
+              <i class="fas fa-user-graduate"></i>
+            </div>
+            About Me
+          </h2>
+          <div class="card-content">
+            <p>I am a bioinformatician and molecular biologist with over two decades of experience in computational biology, genomics, and infectious disease research. I am currently based at the Faculty of Veterinary Medicine at the University of Calgary, where I lead bioinformatics efforts to support high-throughput sequencing and multi-omics studies in multiple organisms.</p>
+            <p>With a professional trajectory spanning North and Central America as well as Europe, I have held research and academic appointments at prestigious institutions including the University of California Riverside, The Scripps Research Institute, and Pacific Agriculture and Agri-Food Canada.</p>
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h2 class="card-title">
+            <div class="card-icon">
+              <i class="fas fa-university"></i>
+            </div>
+            Education & Experience
+          </h2>
+          <div class="card-content">
+            <p>I earned a Ph.D. in Molecular Biology and Virology from the University of Stuttgart, Germany, where I graduated magna cum laude for my work on complex plant virus interactions. I also hold an M.Sc. in Plant Pathology from CATIE, Costa Rica, and an undergraduate degree in Agricultural Engineering from the Universidad Nacional Agraria in Nicaragua.</p>
+            <p>At the University of Alberta, I served as Manager and Lead Bioinformatician at The Applied Genomics Core (TAGC), and as a Research Associate in the Department of Medicine, where I contributed to single-cell and metagenomic studies in oncology and liver diseases.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills Section -->
+      <div class="skills-section">
+        <h2 class="skills-title">Expertise & Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3><i class="fas fa-code"></i> Programming Languages</h3>
+            <ul class="skill-list">
+              <li class="skill-item">Python</li>
+              <li class="skill-item">R</li>
+              <li class="skill-item">Perl</li>
+              <li class="skill-item">C++</li>
+              <li class="skill-item">Bash</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3><i class="fas fa-dna"></i> Research Areas</h3>
+            <ul class="skill-list">
+              <li class="skill-item">Genomics</li>
+              <li class="skill-item">Transcriptomics</li>
+              <li class="skill-item">Metagenomics</li>
+              <li class="skill-item">Single-cell Analysis</li>
+              <li class="skill-item">Pathogen Detection</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3><i class="fas fa-chalkboard-teacher"></i> Teaching</h3>
+            <ul class="skill-list">
+              <li class="skill-item">Bioinformatics Workshops</li>
+              <li class="skill-item">Graduate Courses</li>
+              <li class="skill-item">Hands-on Training</li>
+              <li class="skill-item">Computational Biology</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3><i class="fas fa-globe"></i> Languages</h3>
+            <ul class="skill-list">
+              <li class="skill-item">English (Fluent)</li>
+              <li class="skill-item">Spanish (Fluent)</li>
+              <li class="skill-item">German (Working Knowledge)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Section -->
+      <div class="timeline-section">
+        <h2 class="timeline-title">Professional Journey</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">Present</div>
+            <div class="timeline-title">Faculty of Veterinary Medicine, University of Calgary</div>
+            <div class="timeline-subtitle">Lead Bioinformatician</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">University of Alberta</div>
+            <div class="timeline-title">Manager & Lead Bioinformatician, TAGC</div>
+            <div class="timeline-subtitle">Applied Genomics Core</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">The Scripps Research Institute</div>
+            <div class="timeline-title">Research Associate</div>
+            <div class="timeline-subtitle">Computational Biology</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">University of California Riverside</div>
+            <div class="timeline-title">Research Position</div>
+            <div class="timeline-subtitle">Molecular Biology</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">University of Stuttgart</div>
+            <div class="timeline-title">Ph.D. Molecular Biology and Virology</div>
+            <div class="timeline-subtitle">Magna Cum Laude</div>
+          </div>
+        </div>
+      </div>
     </div>
   </body>
 </html>
