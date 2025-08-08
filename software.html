@@ -4,7 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="www/styles.css">
-    <title>Software</title>     
+    <title>Software</title>
+    <style>
+        .software-hero {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0;
+        }
+        
+        .software-banner {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .software-banner {
+                max-width: 100%;
+            }
+        }
+    </style>     
 </head>
 <body>
 
@@ -25,10 +46,15 @@
         </div>
     </div>
 
+    <!-- Software Banner -->
+    <div class="software-hero">
+        <img src="./images/software_long.png" alt="Software Banner" class="software-banner">
+    </div>
+
     <div class="main">
         <div class="content">
             <p class="main-paragraph">
-                FREE Software<br>
+                
                 Click on the description of a script to download<br>
             </p>
         </div>

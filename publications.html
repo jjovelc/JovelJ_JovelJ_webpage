@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="www/styles.css">
     <title>Publications</title>
+    <style>
+        .publications-hero {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0;
+        }
+        
+        .publications-banner {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .publications-banner {
+                max-width: 100%;
+            }
+        }
+    </style>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -89,10 +110,15 @@ function addFooter(doc, pageNumber, pageWidth, pageHeight, margin) {
 
     </div>
 
+    <!-- Publications Banner -->
+    <div class="publications-hero">
+        <img src="./images/publications_long.png" alt="Publications Banner" class="publications-banner">
+    </div>
+
     <div class="main">
 
         <div class="content">
-            <p  class="subtitle-blue"s>Publications</p>
+            
             
             <button class="pdf-pub-button" onclick="generatePDF()">Download PDF</button>
 

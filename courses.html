@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="www/styles.css">
     <title>Courses</title>
+    <style>
+        .courses-hero {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0;
+        }
+        
+        .courses-banner {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .courses-banner {
+                max-width: 100%;
+            }
+        }
+    </style>
   </head>
   <body>
     <div class="header">
@@ -22,6 +43,11 @@
               <a href="contact.html">Contact</a>
           </div>
       </div>
+    </div>
+
+    <!-- Courses Banner -->
+    <div class="courses-hero">
+        <img src="./images/courses_long.png" alt="Courses Banner" class="courses-banner">
     </div>
    
     <!-- Year and separator-->
