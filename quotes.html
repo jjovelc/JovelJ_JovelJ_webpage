@@ -7,6 +7,25 @@
     <link rel="icon" href="images/JJ_Portrait.jpg" type="image/jpeg">
     <title>Quotes - Juan Jovel</title>
     <style>
+        .quotes-hero {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 0;
+        }
+        
+        .quotes-banner {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        @media (max-width: 768px) {
+            .quotes-banner {
+                max-width: 100%;
+            }
+        }
         .quotes-container {
             display: flex;
             min-height: 100vh;
@@ -15,7 +34,7 @@
 
         .quotes-sidebar {
             width: 280px;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #4a90e2 100%);
+            background: linear-gradient(to bottom, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 10%, #1e3c72 30%, #2a5298 60%, #4a90e2 100%);
             position: relative;
             overflow: hidden;
         }
@@ -38,7 +57,7 @@
             position: relative;
             z-index: 2;
             padding: 40px 20px;
-            color: white;
+            color: #2d3748;
             text-align: center;
         }
 
@@ -46,14 +65,16 @@
             font-size: 2.5em;
             font-weight: 300;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+            font-weight: 600;
         }
 
         .sidebar-subtitle {
             font-size: 1.1em;
-            opacity: 0.9;
+            opacity: 0.8;
             line-height: 1.6;
             margin-bottom: 30px;
+            color: #4a5568;
         }
 
         .decorative-line {
@@ -197,6 +218,11 @@
         </div>
     </div>
 
+    <!-- Quotes Banner -->
+    <div class="quotes-hero">
+        <img src="./images/quotes_long.png" alt="Quotes Banner" class="quotes-banner">
+    </div>
+
     <div class="quotes-container">
         <div class="quotes-sidebar">
             <div class="sidebar-decoration"></div>
@@ -211,7 +237,6 @@
        
         <!-- quotes start here -->
         <div class="quotes-main">
-            <h2 class="page-title">Inspirational Quotes</h2>
             <!-- quote 1 -->
             <div class="quote-item">
                 <div class="quote-text">
