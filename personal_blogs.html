@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="www/styles.css">
+    <link rel="icon" href="images/JJ_Portrait.jpg" type="image/jpeg">
+    <title>Personal Blogs - Juan Jovel</title>
+</head>
+<body>
+    <div class="header">
+        <div class="nav">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="about.html">About</a>
+                <a href="software.html">Software</a>
+                <a href="publications.html">Publications</a>
+                <a href="blog.html">Blog</a>
+                <a href="personal_blogs.html" class="active">Personal Blogs</a>
+                <a href="tutorials.html">Tutorials</a>
+                <a href="quotes.html">Quotes</a>
+                <a href="photo-browser.html">PhotoBrowser</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="page-header">
+            <h1>Personal Blogs</h1>
+            <p>Personal stories and reflections from my life experiences</p>
+        </div>
+
+        <div class="blogs-container">
+            <!-- Custodio Blog -->
+            <div class="blog-item">
+                <a href="personal_blogs/custodio.html">
+                    <div class="blog-thumbnail">
+                        <img src="personal_blogs/custodio.jpg" alt="Custodio - A loyal dog's story">
+                    </div>
+                    <div class="blog-info">
+                        <h3>Custodio</h3>
+                        <p>A story about loyalty, sacrifice, and the unbreakable bond between a man and his faithful companion.</p>
+                        <span class="read-more">Read more →</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .page-header {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 0 1rem;
+        }
+
+        .page-header h1 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .blogs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .blog-item {
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .blog-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .blog-item a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .blog-thumbnail {
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .blog-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-item:hover .blog-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .blog-info {
+            padding: 1.5rem;
+            background: white;
+        }
+
+        .blog-info h3 {
+            margin: 0 0 0.5rem 0;
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .blog-info p {
+            margin: 0 0 1rem 0;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: #007bff;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .blog-thumbnail {
+                height: 200px;
+            }
+            
+            .blog-info {
+                padding: 1rem;
+            }
+        }
+    </style>
+</body>
+</html>
