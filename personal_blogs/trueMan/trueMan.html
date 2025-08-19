@@ -74,6 +74,32 @@
             background-color: #2980b9;
         }
 
+        .language-toggle {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .language-toggle a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 8px 16px;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+
+        .language-toggle a:hover {
+            background-color: #bdc3c7;
+        }
+
+        .language-toggle a.active {
+            background-color: #3498db;
+            color: white;
+        }
+
         @media (max-width: 768px) {
             .blog-container {
                 padding: 15px;
@@ -112,6 +138,10 @@
         <div class="blog-header">
             <h1 class="blog-title">A True Man</h1>
             <p class="blog-subtitle">(in memory to my grand-Pa Alfredo)</p>
+            <div class="language-toggle">
+                <a href="trueMan.html" class="active">English</a>
+                <a href="trueMan_es.html">Español</a>
+            </div>
         </div>
 
         <div class="blog-content">
