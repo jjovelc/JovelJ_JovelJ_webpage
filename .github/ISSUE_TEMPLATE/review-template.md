@@ -19,7 +19,7 @@ Thanks for taking a moment to share your experience! This is just a simple way t
 **Your Comment:**
 [Simply share your experience working with Juan, taking his courses, or collaborating on projects. Keep it casual and honest!]
 
-💡 **Want to add some emojis? Feel free to use these:**
+💡 **Want to add some emojis? Feel free to copy-paste these:**
 - 🌟 ✨ 🎯 (for great experiences)
 - 🧠 💡 📚 (for learning/knowledge)
 - 🤝 👥 🏆 (for collaboration/success)
