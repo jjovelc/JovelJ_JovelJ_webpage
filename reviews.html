@@ -110,6 +110,53 @@
             left: 100%;
         }
         
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .read-reviews-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #228B22, #32CD32);
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(34, 139, 34, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .read-reviews-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(34, 139, 34, 0.6);
+            color: white;
+        }
+        
+        .read-reviews-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .read-reviews-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .read-reviews-btn:hover::before {
+            left: 100%;
+        }
+        
         .reviews-display {
             max-width: 1000px;
             margin: 60px auto;
@@ -196,7 +243,13 @@
                 font-size: 1.8em;
             }
             
-            .leave-review-btn {
+            .button-group {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .leave-review-btn,
+            .read-reviews-btn {
                 padding: 15px 30px;
                 font-size: 1.1em;
             }
@@ -237,14 +290,19 @@
         <div class="leave-review-section">
             <h2>Share Your Experience</h2>
             <p>Have you worked with me on a project, taken one of my courses, or collaborated on research? I'd love to hear about your experience!</p>
-            <a href="https://github.com/jjovelc/JovelJ_JovelJ_webpage/issues/new?template=review-template.md&title=Review%20from%20[Your%20Name]" 
-               class="leave-review-btn" 
-               target="_blank">
-                💬 Leave a Review
-            </a>
+            <div class="button-group">
+                <a href="https://github.com/jjovelc/JovelJ_JovelJ_webpage/issues/new?template=review-template.md&title=Review%20from%20[Your%20Name]" 
+                   class="leave-review-btn" 
+                   target="_blank">
+                    💬 Leave a Review
+                </a>
+                <a href="#reviews-section" class="read-reviews-btn">
+                    📖 Read Reviews
+                </a>
+            </div>
         </div>
 
-        <div class="reviews-display">
+        <div class="reviews-display" id="reviews-section">
             <h2>Recent Reviews</h2>
             
             <!-- Review items will be added here -->
