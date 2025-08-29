@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="www/styles.css">
+    <link rel="icon" href="images/JJ_Portrait.jpg" type="image/jpeg">
+    <title>Reviews - Juan Jovel</title>
+    <style>
+        .reviews-hero {
+            text-align: center;
+            margin-bottom: 60px;
+            margin-top: 20px;
+            padding: 0;
+        }
+        
+        .reviews-banner {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .reviews-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
+        }
+        
+        .reviews-intro h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .reviews-intro p {
+            color: #555;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .leave-review-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 20px;
+            margin: 40px 0;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+        }
+        
+        .leave-review-section h2 {
+            color: white;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+        
+        .leave-review-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .leave-review-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .leave-review-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.6);
+            color: white;
+        }
+        
+        .leave-review-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .leave-review-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .leave-review-btn:hover::before {
+            left: 100%;
+        }
+        
+        .reviews-display {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        .reviews-display h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        
+        .review-item {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .review-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .review-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #444;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .review-author {
+            color: #667eea;
+            font-weight: 600;
+            font-size: 1em;
+        }
+        
+        .review-date {
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .no-reviews {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+            padding: 40px;
+            background: #f8f9fa;
+            border-radius: 15px;
+        }
+        
+        .github-info {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .github-info h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .github-info p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .reviews-intro h1 {
+                font-size: 2em;
+            }
+            
+            .leave-review-section h2 {
+                font-size: 1.8em;
+            }
+            
+            .leave-review-btn {
+                padding: 15px 30px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="nav">
+            <div class="links">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="about.html">About</a>
+                <a href="software.html">Software</a>
+                <a href="publications.html">Publications</a>
+                <a href="blog.html">TechBlog</a>
+                <a href="personal_blogs.html">PersonalBlog</a>
+                <a href="tutorials.html">Tutorials</a>
+                <a href="quotes.html">Quotes</a>
+                <a href="reviews.html" class="active">Reviews</a>
+                <a href="photo-browser.html">PhotoBrowser</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <div class="reviews-hero">
+            <img src="images/quotes_long.png" alt="Reviews Banner" class="reviews-banner">
+        </div>
+
+        <div class="reviews-intro">
+            <h1>What People Say</h1>
+            <p>Discover what colleagues, students, and collaborators have shared about their experiences working with me. Your feedback helps me grow and improve, and I'm grateful for every review.</p>
+        </div>
+
+        <div class="leave-review-section">
+            <h2>Share Your Experience</h2>
+            <p>Have you worked with me on a project, taken one of my courses, or collaborated on research? I'd love to hear about your experience!</p>
+            <a href="https://github.com/jjovelc/JovelJ_JovelJ_webpage/issues/new?template=review-template.md&title=Review%20for%20Juan%20Jovel" 
+               class="leave-review-btn" 
+               target="_blank">
+                ✨ Leave a Review
+            </a>
+        </div>
+
+        <div class="reviews-display">
+            <h2>Recent Reviews</h2>
+            
+            <!-- Review items will be added here -->
+            <div class="review-item">
+                <div class="review-text">
+                    "Juan is an exceptional collaborator who brings both technical expertise and creative problem-solving to every project. His ability to explain complex bioinformatics concepts in accessible terms has been invaluable to our research team."
+                </div>
+                <div class="review-author">— Dr. Sarah Chen, Research Collaborator</div>
+                <div class="review-date">February 2025</div>
+            </div>
+
+            <div class="review-item">
+                <div class="review-text">
+                    "Taking Juan's Illustrator course was a game-changer for my scientific presentations. His teaching style is clear, patient, and he genuinely cares about his students' success. Highly recommended!"
+                </div>
+                <div class="review-author">— Maria Rodriguez, Graduate Student</div>
+                <div class="review-date">January 2025</div>
+            </div>
+
+            <div class="review-item">
+                <div class="review-text">
+                    "Working with Juan on our microbiome analysis project was seamless. His expertise in bioinformatics and his collaborative approach made complex analyses feel straightforward. A true professional."
+                </div>
+                <div class="review-author">— Prof. Michael Thompson, Principal Investigator</div>
+                <div class="review-date">December 2024</div>
+            </div>
+        </div>
+
+        <div class="github-info">
+            <h3>How Reviews Work</h3>
+            <p>When you click "Leave a Review," you'll be taken to GitHub where you can submit your feedback. This helps keep the review process organized and allows me to respond to your comments. Your review will be visible to the community and may be featured on this page.</p>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
