@@ -110,6 +110,12 @@
             left: 100%;
         }
         
+        .external-link {
+            font-size: 0.8em;
+            margin-left: 5px;
+            opacity: 0.8;
+        }
+        
         .button-group {
             display: flex;
             gap: 20px;
@@ -234,6 +240,67 @@
             line-height: 1.6;
         }
         
+        .review-steps {
+            margin: 30px 0;
+        }
+        
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+        
+        .step-number {
+            background: linear-gradient(45deg, #667eea, #87CEEB);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .step-content h4 {
+            color: #2c3e50;
+            margin: 0 0 8px 0;
+            font-size: 1.1em;
+        }
+        
+        .step-content p {
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        .github-note {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        .github-note p {
+            color: #856404;
+            margin: 0;
+            font-size: 0.95em;
+        }
+        
         @media (max-width: 768px) {
             .reviews-intro h1 {
                 font-size: 2em;
@@ -252,6 +319,17 @@
             .read-reviews-btn {
                 padding: 15px 30px;
                 font-size: 1.1em;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+            
+            .step-number {
+                margin: 0 0 15px 0;
+                align-self: center;
             }
         }
     </style>
@@ -294,7 +372,7 @@
                 <a href="https://github.com/jjovelc/JovelJ_JovelJ_webpage/issues/new?template=review-template.md&title=Review%20from%20[Your%20Name]" 
                    class="leave-review-btn" 
                    target="_blank">
-                    💬 Leave a Review
+                    💬 Leave a Review <span class="external-link">↗</span>
                 </a>
                 <a href="#reviews-section" class="read-reviews-btn">
                     📖 Read Reviews
@@ -333,7 +411,32 @@
 
         <div class="github-info">
             <h3>How Reviews Work</h3>
-            <p>When you click "Leave a Review," you'll be taken to GitHub where you can simply leave a comment about your experience. It's super quick and easy - just your name and a brief comment about working with Juan. Your review will be visible to the community and may be featured on this page.</p>
+            <div class="review-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Click "Leave a Review"</h4>
+                        <p>This will open GitHub in a new tab with a pre-filled template</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Fill in Your Details</h4>
+                        <p>Add your name and write your review in the comment section</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Submit Your Review</h4>
+                        <p>Click the green "Submit new issue" button at the bottom of the page</p>
+                    </div>
+                </div>
+            </div>
+            <div class="github-note">
+                <p><strong>Note:</strong> You'll need a GitHub account to submit a review. If you don't have one, you can create a free account in just a few minutes.</p>
+            </div>
         </div>
     </div>
 
