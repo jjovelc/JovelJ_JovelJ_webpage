@@ -175,6 +175,156 @@
             text-align: center;
             font-weight: 300;
         }
+        
+        .quote-search-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 1px solid #dee2e6;
+        }
+        
+        .search-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        #quoteSearch {
+            padding: 12px 20px;
+            font-size: 1.1em;
+            border: 2px solid #4a90e2;
+            border-radius: 25px;
+            outline: none;
+            transition: all 0.3s ease;
+            min-width: 200px;
+        }
+        
+        #quoteSearch:focus {
+            border-color: #2a5298;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+        
+        .search-btn {
+            background: linear-gradient(45deg, #4a90e2, #2a5298);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 144, 226, 0.4);
+        }
+        
+        .search-btn:active {
+            transform: translateY(0);
+        }
+        
+        /* Modal Popup Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-quote {
+            font-size: 1.4em;
+            line-height: 1.6;
+            color: #333;
+            margin-bottom: 20px;
+            font-style: italic;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .modal-quote::before {
+            content: '"';
+            font-size: 3em;
+            color: #4a90e2;
+            position: absolute;
+            top: -10px;
+            left: -15px;
+            font-family: Georgia, serif;
+        }
+        
+        .modal-author {
+            font-size: 1.2em;
+            color: #666;
+            text-align: right;
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+        
+        .modal-number {
+            color: #F78C03;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close:hover {
+            color: #333;
+        }
+        
+        .error-message {
+            color: #dc3545;
+            text-align: center;
+            font-size: 1.1em;
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+        }
 
         @media (max-width: 768px) {
             .quotes-container {
@@ -239,6 +389,14 @@
        
         <!-- quotes start here -->
         <div class="quotes-main">
+            <!-- Quote Search Section -->
+            <div class="quote-search-section">
+                <div class="search-container">
+                    <input type="number" id="quoteSearch" placeholder="Enter quote number (1-48)" min="1" max="48">
+                    <button id="searchBtn" class="search-btn">🔍 Search</button>
+                </div>
+            </div>
+            
             <!-- quote 1 -->
             <div class="quote-item">
                 <div class="quote-text">
@@ -728,6 +886,106 @@
             <!-- More quotes will be added here -->
         </div>
     </div>
+    
+    <!-- Quote Search Modal -->
+    <div id="quoteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-number" id="modalNumber"></div>
+            <div class="modal-quote" id="modalQuote"></div>
+            <div class="modal-author" id="modalAuthor"></div>
+        </div>
+    </div>
+    
+    <script>
+        // Quote Search Functionality
+        const modal = document.getElementById('quoteModal');
+        const searchInput = document.getElementById('quoteSearch');
+        const searchBtn = document.getElementById('searchBtn');
+        const closeBtn = document.querySelector('.close');
+        
+        // Search button click
+        searchBtn.addEventListener('click', searchQuote);
+        
+        // Enter key press in input
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchQuote();
+            }
+        });
+        
+        // Close modal when clicking X
+        closeBtn.addEventListener('click', closeModal);
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
+        function searchQuote() {
+            const quoteNumber = parseInt(searchInput.value);
+            
+            if (isNaN(quoteNumber) || quoteNumber < 1 || quoteNumber > 48) {
+                showError('Please enter a valid quote number between 1 and 48');
+                return;
+            }
+            
+            // Find the quote element
+            const quoteElement = document.querySelector(`[style*="# ${quoteNumber}."]`);
+            
+            if (quoteElement) {
+                const quoteText = quoteElement.textContent.replace(`# ${quoteNumber}.`, '').trim();
+                const authorElement = quoteElement.parentElement.nextElementSibling;
+                const author = authorElement.textContent;
+                
+                // Display in modal
+                document.getElementById('modalNumber').textContent = `# ${quoteNumber}`;
+                document.getElementById('modalQuote').textContent = quoteText;
+                document.getElementById('modalAuthor').textContent = author;
+                
+                modal.style.display = 'block';
+                searchInput.value = '';
+            } else {
+                showError(`Quote #${quoteNumber} not found`);
+            }
+        }
+        
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+        
+        function showError(message) {
+            // Remove existing error message
+            const existingError = document.querySelector('.error-message');
+            if (existingError) {
+                existingError.remove();
+            }
+            
+            // Create and show new error message
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error-message';
+            errorDiv.textContent = message;
+            
+            const searchSection = document.querySelector('.quote-search-section');
+            searchSection.appendChild(errorDiv);
+            
+            // Auto-remove error after 3 seconds
+            setTimeout(() => {
+                if (errorDiv.parentNode) {
+                    errorDiv.remove();
+                }
+            }, 3000);
+        }
+    </script>
 </body>
 </html> 
 
