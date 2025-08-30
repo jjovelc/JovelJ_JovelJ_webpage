@@ -208,7 +208,8 @@
             font-size: 0.95em;
         }
         
-        #quoteSearch {
+        #quoteSearch,
+        #authorSearch {
             padding: 12px 20px;
             font-size: 1.1em;
             border: 2px solid #4a90e2;
@@ -218,7 +219,8 @@
             min-width: 200px;
         }
         
-        #quoteSearch:focus {
+        #quoteSearch:focus,
+        #authorSearch:focus {
             border-color: #2a5298;
             box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
         }
@@ -926,6 +928,9 @@
             <div class="modal-number" id="modalNumber"></div>
             <div class="modal-quote" id="modalQuote"></div>
             <div class="modal-author" id="modalAuthor"></div>
+            <div class="modal-author-quotes" id="modalAuthorQuotes" style="display: none;">
+                <div id="authorQuotesList"></div>
+            </div>
         </div>
     </div>
     
@@ -1001,6 +1006,11 @@
                 // Extract quote text without the number
                 const quoteText = foundQuote.textContent.replace(`# ${quoteNumber}.`, '').trim();
                 
+                // Hide author quotes section and show single quote elements
+                document.getElementById('modalAuthorQuotes').style.display = 'none';
+                document.getElementById('modalQuote').style.display = 'block';
+                document.getElementById('modalAuthor').style.display = 'block';
+                
                 // Display in modal
                 document.getElementById('modalNumber').textContent = `# ${quoteNumber}`;
                 document.getElementById('modalQuote').textContent = quoteText;
@@ -1054,25 +1064,30 @@
         }
         
         function displayAuthorQuotes(authorName, quotes) {
-            // Update modal content for multiple quotes
+            // Hide single quote display elements
+            document.getElementById('modalQuote').style.display = 'none';
+            document.getElementById('modalAuthor').style.display = 'none';
+            
+            // Show author quotes section
+            const modalAuthorQuotes = document.getElementById('modalAuthorQuotes');
             const modalNumber = document.getElementById('modalNumber');
-            const modalQuote = document.getElementById('modalQuote');
-            const modalAuthor = document.getElementById('modalAuthor');
+            const authorQuotesList = document.getElementById('authorQuotesList');
             
             modalNumber.textContent = `Quotes by ${authorName.charAt(0).toUpperCase() + authorName.slice(1)} (${quotes.length} found)`;
             
-            // Display all quotes
-            let quotesHtml = '';
+            // Clear previous results and display all quotes
+            authorQuotesList.innerHTML = '';
             quotes.forEach(quote => {
-                quotesHtml += `<div style="margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee;">
+                const quoteDiv = document.createElement('div');
+                quoteDiv.style.cssText = 'margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee;';
+                quoteDiv.innerHTML = `
                     <div style="color: #F78C03; font-weight: bold; margin-bottom: 8px;">${quote.number}</div>
                     <div style="font-style: italic; margin-bottom: 8px;">"${quote.text}"</div>
-                </div>`;
+                `;
+                authorQuotesList.appendChild(quoteDiv);
             });
             
-            modalQuote.innerHTML = quotesHtml;
-            modalAuthor.textContent = `— ${quotes[0].author.replace('— ', '')}`;
-            
+            modalAuthorQuotes.style.display = 'block';
             modal.style.display = 'block';
         }
         
