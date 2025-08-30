@@ -939,18 +939,31 @@
                 return;
             }
             
-            // Find the quote element
-            const quoteElement = document.querySelector(`[style*="# ${quoteNumber}."]`);
+            // Find the quote element by looking for the span with the quote number
+            const quoteSpans = document.querySelectorAll('.quote-text span');
+            let foundQuote = null;
+            let foundAuthor = null;
             
-            if (quoteElement) {
-                const quoteText = quoteElement.textContent.replace(`# ${quoteNumber}.`, '').trim();
-                const authorElement = quoteElement.parentElement.nextElementSibling;
-                const author = authorElement.textContent;
+            for (let span of quoteSpans) {
+                if (span.textContent.includes(`# ${quoteNumber}.`)) {
+                    foundQuote = span.parentElement;
+                    // Get the author from the next sibling element
+                    const authorElement = foundQuote.nextElementSibling;
+                    if (authorElement && authorElement.classList.contains('quote-author')) {
+                        foundAuthor = authorElement.textContent;
+                    }
+                    break;
+                }
+            }
+            
+            if (foundQuote && foundAuthor) {
+                // Extract quote text without the number
+                const quoteText = foundQuote.textContent.replace(`# ${quoteNumber}.`, '').trim();
                 
                 // Display in modal
                 document.getElementById('modalNumber').textContent = `# ${quoteNumber}`;
                 document.getElementById('modalQuote').textContent = quoteText;
-                document.getElementById('modalAuthor').textContent = author;
+                document.getElementById('modalAuthor').textContent = foundAuthor;
                 
                 modal.style.display = 'block';
                 searchInput.value = '';
