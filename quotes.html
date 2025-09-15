@@ -420,7 +420,7 @@
                 <div class="search-container">
                     <div class="search-group">
                         <label for="quoteSearch">Search by Quote Number:</label>
-                        <input type="number" id="quoteSearch" placeholder="Enter quote number (1-55)" min="1" max="55">
+                        <input type="number" id="quoteSearch" placeholder="Enter quote number (1-56)" min="1" max="56">
                         <button id="searchBtn" class="search-btn">🔍 Search</button>
                     </div>
                     <div class="search-group">
@@ -986,6 +986,16 @@
             </div>
             <div class="flower-separator"></div>
 
+            <!-- quote 56 -->
+            <div class="quote-item">
+                <div class="quote-text">
+                    <span style="color: #F78C03; font-weight: bold;"># 56.</span>
+                    A great piece of engineering keeps its value over time.
+                </div>
+                <div class="quote-author">— Juan Jovel</div>
+            </div>
+            <div class="flower-separator"></div>
+
             <!-- ******** -->
             <!-- More quotes will be added here -->
         </div>
@@ -1050,8 +1060,8 @@
         function searchQuote() {
             const quoteNumber = parseInt(searchInput.value);
             
-            if (isNaN(quoteNumber) || quoteNumber < 1 || quoteNumber > 55) {
-                showError('Please enter a valid quote number between 1 and 55');
+            if (isNaN(quoteNumber) || quoteNumber < 1 || quoteNumber > 56) {
+                showError('Please enter a valid quote number between 1 and 56');
                 return;
             }
             
