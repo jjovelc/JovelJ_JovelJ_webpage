@@ -444,7 +444,7 @@
                 <div class="search-container">
                     <div class="search-group">
                         <label for="quoteSearch">Search by Quote Number:</label>
-                        <input type="number" id="quoteSearch" placeholder="Enter quote number (1-58)" min="1" max="58">
+                        <input type="number" id="quoteSearch" placeholder="Enter quote number (1-61)" min="1" max="61">
                         <button id="searchBtn" class="search-btn">🔍 Search</button>
                     </div>
                     <div class="search-group">
@@ -1108,6 +1108,28 @@
                 <div class="quote-author">— Jules Verne</div>
             </div>
             <div class="flower-separator"></div>
+
+            <!-- quote 60 -->
+            <div class="quote-item">
+                <div class="quote-text">
+                    <span class="quote-number"># 60.</span>
+                    <div class="quote-english">Use your intelligence to find ways to be happy, that's a nice quest.</div>
+                    <div class="quote-spanish">Usa tu inteligencia para encontrar formas de ser feliz, esa es una bella búsqueda.</div>
+                </div>
+                <div class="quote-author">— Juan Jovel</div>
+            </div>
+            <div class="flower-separator"></div>
+
+            <!-- quote 61 -->
+            <div class="quote-item">
+                <div class="quote-text">
+                    <span class="quote-number"># 61.</span>
+                    <div class="quote-english">The fool chooses to believe only part of reality, because the other part is too painful and they lack the courage to face it.</div>
+                    <div class="quote-spanish">El necio escoge creer solo una parte de la realidad, porque la otra parte le resulta demasiado dolorosa y carece de la valentía para asumirla.</div>
+                </div>
+                <div class="quote-author">— Juan Jovel</div>
+            </div>
+            <div class="flower-separator"></div>
             <!-- ******** -->
             <!-- More quotes will be added here -->
         </div>
@@ -1172,8 +1194,8 @@
         function searchQuote() {
             const quoteNumber = parseInt(searchInput.value);
             
-            if (isNaN(quoteNumber) || quoteNumber < 1 || quoteNumber > 58) {
-                showError('Please enter a valid quote number between 1 and 58');
+            if (isNaN(quoteNumber) || quoteNumber < 1 || quoteNumber > 61) {
+                showError('Please enter a valid quote number between 1 and 61');
                 return;
             }
             
