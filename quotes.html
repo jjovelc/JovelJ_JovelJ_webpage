@@ -444,7 +444,7 @@
                 <div class="search-container">
                     <div class="search-group">
                         <label for="quoteSearch">Search by Quote Number:</label>
-                        <input type="number" id="quoteSearch" placeholder="Enter quote number (1-66)" min="1" max="66">
+                        <input type="number" id="quoteSearch" placeholder="Enter quote number (1-67)" min="1" max="67">
                         <button id="searchBtn" class="search-btn">🔍 Search</button>
                     </div>
                     <div class="search-group">
@@ -1185,6 +1185,17 @@
                 <div class="quote-author">— Fiodor Dostoievski</div>
             </div>
             <div class="flower-separator"></div>
+
+            <!-- quote 67 -->
+            <div class="quote-item">
+                <div class="quote-text">
+                    <span class="quote-number"># 67.</span>
+                    <div class="quote-english">If there is no God, everything is permitted.</div>
+                    <div class="quote-spanish">Si no hay Dios, todo está permitido.</div>
+                </div>
+                <div class="quote-author">— Fyodor Dostoevsky</div>
+            </div>
+            <div class="flower-separator"></div>
             <!-- ******** -->
             <!-- More quotes will be added here -->
         </div>
@@ -1249,8 +1260,8 @@
         function searchQuote() {
             const quoteNumber = parseInt(searchInput.value);
             
-            if (isNaN(quoteNumber) || quoteNumber < 1 || quoteNumber > 66) {
-                showError('Please enter a valid quote number between 1 and 66');
+            if (isNaN(quoteNumber) || quoteNumber < 1 || quoteNumber > 67) {
+                showError('Please enter a valid quote number between 1 and 67');
                 return;
             }
             
