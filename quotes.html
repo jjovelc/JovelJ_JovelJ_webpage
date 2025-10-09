@@ -444,7 +444,7 @@
                 <div class="search-container">
                     <div class="search-group">
                         <label for="quoteSearch">Search by Quote Number:</label>
-                        <input type="number" id="quoteSearch" placeholder="Enter quote number (1-70)" min="1" max="70">
+                        <input type="number" id="quoteSearch" placeholder="Enter quote number (1-71)" min="1" max="71">
                         <button id="searchBtn" class="search-btn">🔍 Search</button>
                     </div>
                     <div class="search-group">
@@ -1229,6 +1229,17 @@
                 <div class="quote-author">— Neel Nanda</div>
             </div>
             <div class="flower-separator"></div>
+
+            <!-- quote 71 -->
+            <div class="quote-item">
+                <div class="quote-text">
+                    <span class="quote-number"># 71.</span>
+                    <div class="quote-english">The beauty of the world from the summit can only be appreciated when we remember how difficult it was to climb the steep ascent... If you didn't climb it on your own, you will never be able to discover it.</div>
+                    <div class="quote-spanish">La belleza del mundo desde la cima solo puede apreciarse cuando recordamos lo difícil que fue subir la escarpada... Si no subiste por tu cuenta, nunca podrás descubrirla.</div>
+                </div>
+                <div class="quote-author">— Juan Jovel</div>
+            </div>
+            <div class="flower-separator"></div>
             <!-- ******** -->
             <!-- More quotes will be added here -->
         </div>
@@ -1293,8 +1304,8 @@
         function searchQuote() {
             const quoteNumber = parseInt(searchInput.value);
             
-            if (isNaN(quoteNumber) || quoteNumber < 1 || quoteNumber > 70) {
-                showError('Please enter a valid quote number between 1 and 70');
+            if (isNaN(quoteNumber) || quoteNumber < 1 || quoteNumber > 71) {
+                showError('Please enter a valid quote number between 1 and 71');
                 return;
             }
             
