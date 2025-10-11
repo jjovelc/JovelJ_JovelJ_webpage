@@ -270,6 +270,29 @@
             transform: translateY(0);
         }
         
+        .slideshow-btn {
+            background: linear-gradient(45deg, #333, #666);
+            color: white;
+            border: 2px solid #444;
+            padding: 12px 25px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .slideshow-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            background: linear-gradient(45deg, #444, #777);
+        }
+        
+        .slideshow-btn:active {
+            transform: translateY(0);
+        }
+        
         /* Modal Popup Styles */
         .modal {
             display: none;
@@ -366,6 +389,148 @@
             border: 1px solid #f5c6cb;
             border-radius: 8px;
         }
+        
+        /* TV Slideshow Modal Styles */
+        .slideshow-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            backdrop-filter: blur(10px);
+        }
+        
+        .slideshow-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #0C1445;
+            border: 3px solid #444;
+            border-radius: 20px;
+            margin: 20px;
+            box-shadow: 
+                0 0 50px rgba(0,0,0,0.8),
+                inset 0 0 50px rgba(255,255,255,0.05);
+        }
+        
+        .slideshow-quote-english {
+            font-size: 2.5em;
+            line-height: 1.4;
+            color: #ffffff;
+            text-align: center;
+            margin: 0 60px 20px 60px;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            animation: slideIn 1s ease-out;
+        }
+        
+        .slideshow-quote-spanish {
+            font-size: 2.5em;
+            line-height: 1.4;
+            color: #FFB84D;
+            text-align: center;
+            margin: 0 60px;
+            font-weight: 300;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            animation: slideIn 1s ease-out 0.3s both;
+        }
+        
+        .slideshow-author {
+            font-size: 1.8em;
+            color: #cccccc;
+            text-align: center;
+            margin-top: 30px;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+        
+        .slideshow-number {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 1.5em;
+            color: dodgerblue;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+        
+        .slideshow-controls {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            animation: fadeIn 1s ease-out 1s both;
+        }
+        
+        .slideshow-control-btn {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            backdrop-filter: blur(10px);
+        }
+        
+        .slideshow-control-btn:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
+        }
+        
+        .slideshow-progress {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            animation: fadeIn 1s ease-out 1.2s both;
+        }
+        
+        .slideshow-progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, dodgerblue, #4a90e2);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
 
         @media (max-width: 768px) {
             .quotes-container {
@@ -451,6 +616,9 @@
                         <label for="authorSearch">Search by Author:</label>
                         <input type="text" id="authorSearch" placeholder="Enter author name (e.g., Steve Jobs)">
                         <button id="authorSearchBtn" class="search-btn">🔍 Search</button>
+                    </div>
+                    <div class="search-group">
+                        <button id="slideshowBtn" class="slideshow-btn">📺 TV Slideshow</button>
                     </div>
                 </div>
             </div>
@@ -1258,6 +1426,25 @@
         </div>
     </div>
     
+    <!-- TV Slideshow Modal -->
+    <div id="slideshowModal" class="slideshow-modal">
+        <div class="slideshow-content">
+            <div class="slideshow-number" id="slideshowNumber"></div>
+            <div class="slideshow-quote-english" id="slideshowQuoteEnglish"></div>
+            <div class="slideshow-quote-spanish" id="slideshowQuoteSpanish"></div>
+            <div class="slideshow-author" id="slideshowAuthor"></div>
+            <div class="slideshow-controls">
+                <button class="slideshow-control-btn" id="prevBtn">⏮ Previous</button>
+                <button class="slideshow-control-btn" id="pauseBtn">⏸ Pause</button>
+                <button class="slideshow-control-btn" id="nextBtn">Next ⏭</button>
+                <button class="slideshow-control-btn" id="closeSlideshowBtn">✕ Close</button>
+            </div>
+            <div class="slideshow-progress">
+                <div class="slideshow-progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+    
     <script>
         // Quote Search Functionality
         const modal = document.getElementById('quoteModal');
@@ -1267,9 +1454,35 @@
         const authorSearchBtn = document.getElementById('authorSearchBtn');
         const closeBtn = document.querySelector('.close');
         
+        // Slideshow Functionality
+        const slideshowModal = document.getElementById('slideshowModal');
+        const slideshowBtn = document.getElementById('slideshowBtn');
+        const slideshowNumber = document.getElementById('slideshowNumber');
+        const slideshowQuoteEnglish = document.getElementById('slideshowQuoteEnglish');
+        const slideshowQuoteSpanish = document.getElementById('slideshowQuoteSpanish');
+        const slideshowAuthor = document.getElementById('slideshowAuthor');
+        const prevBtn = document.getElementById('prevBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const closeSlideshowBtn = document.getElementById('closeSlideshowBtn');
+        const progressBar = document.getElementById('progressBar');
+        
+        let currentSlideIndex = 0;
+        let slideshowInterval;
+        let isPaused = false;
+        let slideshowQuotes = [];
+        const SLIDE_DURATION = 10000; // 10 seconds per slide
+        
         // Search button clicks
         searchBtn.addEventListener('click', searchQuote);
         authorSearchBtn.addEventListener('click', searchByAuthor);
+        
+        // Slideshow button clicks
+        slideshowBtn.addEventListener('click', startSlideshow);
+        prevBtn.addEventListener('click', previousSlide);
+        nextBtn.addEventListener('click', nextSlide);
+        pauseBtn.addEventListener('click', togglePause);
+        closeSlideshowBtn.addEventListener('click', closeSlideshow);
         
         // Enter key press in inputs
         searchInput.addEventListener('keypress', function(e) {
@@ -1297,9 +1510,112 @@
         // Close modal with Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                closeModal();
+                if (slideshowModal.style.display === 'block') {
+                    closeSlideshow();
+                } else {
+                    closeModal();
+                }
             }
         });
+        
+        // Slideshow Functions
+        function startSlideshow() {
+            // Collect all quotes from the page
+            slideshowQuotes = [];
+            const quoteItems = document.querySelectorAll('.quote-item');
+            
+            quoteItems.forEach(item => {
+                const numberSpan = item.querySelector('.quote-number');
+                const englishText = item.querySelector('.quote-english')?.textContent || '';
+                const spanishText = item.querySelector('.quote-spanish')?.textContent || '';
+                const authorElement = item.querySelector('.quote-author');
+                
+                if (numberSpan && authorElement) {
+                    slideshowQuotes.push({
+                        number: numberSpan.textContent,
+                        english: englishText,
+                        spanish: spanishText,
+                        author: authorElement.textContent,
+                        fullText: englishText + (spanishText ? '\n\n' + spanishText : '')
+                    });
+                }
+            });
+            
+            if (slideshowQuotes.length === 0) return;
+            
+            currentSlideIndex = 0;
+            slideshowModal.style.display = 'block';
+            showSlide();
+            startAutoSlide();
+        }
+        
+        function showSlide() {
+            const quote = slideshowQuotes[currentSlideIndex];
+            slideshowNumber.textContent = quote.number;
+            slideshowQuoteEnglish.textContent = quote.english;
+            slideshowQuoteSpanish.textContent = quote.spanish;
+            slideshowAuthor.textContent = quote.author;
+            
+            // Reset progress bar
+            progressBar.style.width = '0%';
+        }
+        
+        function startAutoSlide() {
+            clearInterval(slideshowInterval);
+            isPaused = false;
+            pauseBtn.textContent = '⏸ Pause';
+            
+            slideshowInterval = setInterval(() => {
+                if (!isPaused) {
+                    nextSlide();
+                }
+            }, SLIDE_DURATION);
+            
+            // Animate progress bar
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                if (!isPaused) {
+                    progress += (100 / (SLIDE_DURATION / 50));
+                    progressBar.style.width = Math.min(progress, 100) + '%';
+                    if (progress >= 100) {
+                        clearInterval(progressInterval);
+                    }
+                }
+            }, 50);
+        }
+        
+        function nextSlide() {
+            currentSlideIndex = (currentSlideIndex + 1) % slideshowQuotes.length;
+            showSlide();
+            if (!isPaused) {
+                startAutoSlide();
+            }
+        }
+        
+        function previousSlide() {
+            currentSlideIndex = currentSlideIndex === 0 ? slideshowQuotes.length - 1 : currentSlideIndex - 1;
+            showSlide();
+            if (!isPaused) {
+                startAutoSlide();
+            }
+        }
+        
+        function togglePause() {
+            isPaused = !isPaused;
+            pauseBtn.textContent = isPaused ? '▶ Resume' : '⏸ Pause';
+            
+            if (!isPaused) {
+                startAutoSlide();
+            } else {
+                clearInterval(slideshowInterval);
+            }
+        }
+        
+        function closeSlideshow() {
+            slideshowModal.style.display = 'none';
+            clearInterval(slideshowInterval);
+            isPaused = false;
+        }
         
         function searchQuote() {
             const quoteNumber = parseInt(searchInput.value);
