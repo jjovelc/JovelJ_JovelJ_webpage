@@ -610,7 +610,7 @@
                 <div class="search-container">
                     <div class="search-group">
                         <label for="quoteSearch">Search by Quote Number:</label>
-                        <input type="number" id="quoteSearch" placeholder="Enter quote number (1-72)" min="1" max="72">
+                        <input type="number" id="quoteSearch" placeholder="Enter quote number (1-75)" min="1" max="75">
                         <button id="searchBtn" class="search-btn">🔍 Search</button>
                     </div>
                     <div class="search-group">
@@ -1420,6 +1420,39 @@
                 <div class="quote-author">— Juan Jovel</div>
             </div>
             <div class="flower-separator"></div>
+
+            <!-- quote 73 -->
+            <div class="quote-item">
+                <div class="quote-text">
+                    <span class="quote-number"># 73.</span>
+                    <div class="quote-english">Before a plant or an animal, genius creates a poem; brute destroys them without reason.</div>
+                    <div class="quote-spanish">Ante una planta o un animal, el genio crea un poema; el bruto los destruye sin razón.</div>
+                </div>
+                <div class="quote-author">— Juan Jovel</div>
+            </div>
+            <div class="flower-separator"></div>
+
+            <!-- quote 74 -->
+            <div class="quote-item">
+                <div class="quote-text">
+                    <span class="quote-number"># 74.</span>
+                    <div class="quote-english">Whoever accepts themselves does not poison the path of others.</div>
+                    <div class="quote-spanish">Quien se acepta a sí mismo no envenena el camino de otros.</div>
+                </div>
+                <div class="quote-author">— Juan Jovel</div>
+            </div>
+            <div class="flower-separator"></div>
+
+            <!-- quote 75 -->
+            <div class="quote-item">
+                <div class="quote-text">
+                    <span class="quote-number"># 75.</span>
+                    <div class="quote-english">Whoever is at peace with their life, will be at peace with their death.</div>
+                    <div class="quote-spanish">Quien está en paz con su vida, estará en paz con su muerte.</div>
+                </div>
+                <div class="quote-author">— Juan Jovel</div>
+            </div>
+            <div class="flower-separator"></div>
             <!-- ******** -->
             <!-- More quotes will be added here -->
         </div>
@@ -1632,8 +1665,8 @@
         function searchQuote() {
             const quoteNumber = parseInt(searchInput.value);
             
-            if (isNaN(quoteNumber) || quoteNumber < 1 || quoteNumber > 72) {
-                showError('Please enter a valid quote number between 1 and 72');
+            if (isNaN(quoteNumber) || quoteNumber < 1 || quoteNumber > 75) {
+                showError('Please enter a valid quote number between 1 and 75');
                 return;
             }
             
