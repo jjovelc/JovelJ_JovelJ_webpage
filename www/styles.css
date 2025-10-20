@@ -2,17 +2,23 @@
 /* Styles for screens smaller than 768px (typical mobile devices) */
 @media (max-width: 768px) {
   .banner {
-    height: 400px; /* Increase banner height for mobile */
-    padding: 20px 10px; /* Add padding for better spacing */
+    height: 100vh; /* Full viewport height for better mobile experience */
+    padding: 60px 15px 20px 15px; /* Add top padding for fixed nav */
     background-size: cover;
     background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   .description {
-    font-size: 1.2em; /* Reduce font size for mobile */
-    margin: 30px 0 0 0;
+    font-size: 1.4em; /* Better mobile font size */
+    margin: 20px 0 0 0;
     text-align: center;
-    padding: 0 10px;
+    padding: 0 15px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
   }
 
   .main-paragraph {
@@ -25,145 +31,304 @@
     margin: 0 1cm; /* Adjust margins for mobile */
   }
 
-  .youtube-btn, .github-button, .ucvm_page-btn {
-    position: static; /* Stack buttons vertically */
-    margin: 8px auto; /* Center buttons with smaller margin */
-    display: block;
-    width: 80%; /* Limit button width */
-    max-width: 200px;
-    font-size: 14px; /* Smaller font for buttons */
-    padding: 8px 15px; /* Smaller padding */
+  /* Mobile button container for better organization */
+  .banner {
+    position: relative;
   }
 
-  .youtube-logo, .github-logo, .ucvm_page-logo {
-    width: 16px; /* Smaller logos */
-    height: 16px;
+  .youtube-btn, .github-button, .ucvm_page-btn, .aboutme-btn {
+    position: static !important;
+    margin: 12px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    max-width: 90%;
+    font-size: 16px;
+    padding: 12px 20px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    color: white !important;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
   }
 
-  .aboutme-btn {
-    position: static !important; /* Override absolute positioning */
-    margin: 8px auto;
-    display: block;
-    width: 80%;
-    max-width: 200px;
-    font-size: 14px;
-    padding: 8px 15px;
+  .youtube-btn:hover, .github-button:hover, .ucvm_page-btn:hover, .aboutme-btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .youtube-logo, .github-logo, .ucvm_page-logo, .aboutme-logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    flex-shrink: 0;
   }
 
   .aboutme-logo {
-    width: 16px;
-    height: 16px;
+    border-radius: 50%;
   }
 
-  .grid-container {
-    grid-template-columns: 1fr; /* Single column layout for mobile */
-    gap: 15px; /* Reduce gap */
-    margin-left: 5px; /* Reduce left margin */
+  /* Button stack container */
+  .banner::after {
+    content: '';
+    display: block;
+    flex-grow: 1;
   }
 
-  .grid-item {
-    margin-left: 10px; /* Reduce left margin */
+  /* Mobile navigation improvements */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
   }
 
-  .thumbnail img {
-    max-width: 120px; /* Smaller thumbnails */
-    height: 80px;
-  }
-
-  .thumbnail-title h3 {
-    font-size: 14px; /* Smaller title font */
-  }
-
-  .quote-box, .quote-box-illustrator {
-    max-width: 100%; /* Full width for mobile */
-    margin: 10px 0; /* Adjust margins */
-  }
-
-  .quote-container {
-    flex-direction: column; /* Stack boxes vertically */
-    align-items: center; /* Center boxes */
-  }
-
-  .quote-box-content, .quote-box-support {
-    position: static; /* Stack boxes vertically */
-    width: 90%; /* Full width for mobile */
-    margin: 10px auto; /* Center boxes */
-  }
-
-  /* Navigation improvements */
   .nav {
-    padding: 8px 10px; /* Reduce padding */
+    padding: 8px 5px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav .links {
+    display: flex;
+    gap: 8px;
+    padding: 0 5px;
   }
 
   .nav a {
-    font-size: 12px; /* Smaller font for nav */
-    margin: 0 5px; /* Reduce margin */
-    padding: 5px 8px; /* Add padding */
+    font-size: 11px;
+    margin: 0;
+    padding: 8px 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: background-color 0.3s ease;
+  }
+
+  .nav a:hover, .nav a.active {
+    background-color: rgba(255, 215, 0, 0.2);
+  }
+
+  .nav a.active {
+    color: #FFD700;
+    border-bottom: 2px solid #FFD700;
+    font-weight: bold;
+  }
+
+  /* Ensure main content doesn't get hidden behind fixed nav */
+  .main {
+    margin-top: 60px;
+  }
+
+  /* Grid improvements for mobile */
+  .grid-container {
+    grid-template-columns: 1fr 1fr; /* Two columns on larger mobile */
+    gap: 20px;
+    margin: 20px 15px;
+    padding: 0;
+  }
+
+  .grid-item {
+    margin-left: 0;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .thumbnail {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .thumbnail img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .grid-item:hover .thumbnail img {
+    transform: scale(1.05);
+  }
+
+  .thumbnail-title {
+    padding: 12px;
+  }
+
+  .thumbnail-title h3, .thumbnail-title h5 {
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0;
+    color: #333;
+  }
+
+  /* Mobile scroll arrow positioning */
+  .mouse_scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Quote boxes mobile optimization */
+  .quote-box, .quote-box-illustrator {
+    max-width: 100%;
+    margin: 10px 15px;
+    border-radius: 15px;
+  }
+
+  .quote-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 15px;
+  }
+
+  .quote-box-content, .quote-box-support {
+    position: static;
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  /* Announcement banner mobile optimization */
+  .announcement-text {
+    font-size: 16px;
+    padding: 0 15px;
   }
 }
 
 /* Styles for screens smaller than 480px (very small mobile devices) */
 @media (max-width: 480px) {
   .banner {
-    height: 350px; /* Slightly smaller height */
-    padding: 15px 5px;
+    height: 100vh;
+    padding: 70px 10px 20px 10px;
   }
 
   .description {
-    font-size: 1em; /* Even smaller font */
-    margin: 20px 0 0 0;
+    font-size: 1.2em;
+    margin: 15px 0 0 0;
+    padding: 0 10px;
   }
 
   .main-paragraph {
-    font-size: 14px; /* Further adjust font size */
+    font-size: 14px;
     width: 95%;
     margin-left: 2.5%;
   }
 
   .contact-format {
-    margin: 0 0.5cm; /* Further adjust margins */
+    margin: 0 0.5cm;
   }
 
   .youtube-btn, .github-button, .ucvm_page-btn, .aboutme-btn {
-    width: 90%;
-    font-size: 12px;
-    padding: 6px 12px;
+    width: 260px;
+    max-width: 85%;
+    font-size: 14px;
+    padding: 10px 16px;
+    margin: 10px auto;
+  }
+
+  .youtube-logo, .github-logo, .ucvm_page-logo, .aboutme-logo {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+  }
+
+  .nav {
+    padding: 6px 3px;
   }
 
   .nav a {
-    font-size: 11px;
-    margin: 0 2px;
-    padding: 4px 6px;
+    font-size: 10px;
+    margin: 0;
+    padding: 6px 10px;
   }
 
+  /* Single column grid for very small screens */
   .grid-container {
-    margin-left: 2px;
+    grid-template-columns: 1fr;
+    margin: 15px 10px;
+    gap: 15px;
   }
 
   .grid-item {
-    margin-left: 5px;
+    margin-left: 0;
   }
 
   .thumbnail img {
-    max-width: 100px;
-    height: 70px;
+    height: 100px;
+  }
+
+  .thumbnail-title {
+    padding: 10px;
+  }
+
+  .thumbnail-title h3, .thumbnail-title h5 {
+    font-size: 13px;
+  }
+
+  /* Announcement banner adjustments */
+  .announcement-text {
+    font-size: 14px;
+    padding: 0 10px;
   }
 }
 
 /* Extra small devices */
 @media (max-width: 360px) {
   .banner {
-    height: 300px;
+    height: 100vh;
+    padding: 75px 8px 20px 8px;
   }
 
   .description {
-    font-size: 0.9em;
+    font-size: 1.1em;
+    margin: 10px 0 0 0;
+  }
+
+  .youtube-btn, .github-button, .ucvm_page-btn, .aboutme-btn {
+    width: 240px;
+    max-width: 90%;
+    font-size: 13px;
+    padding: 8px 14px;
+    margin: 8px auto;
+  }
+
+  .youtube-logo, .github-logo, .ucvm_page-logo, .aboutme-logo {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+
+  .nav {
+    padding: 5px 2px;
   }
 
   .nav a {
-    font-size: 10px;
-    margin: 0 1px;
-    padding: 3px 4px;
+    font-size: 9px;
+    padding: 5px 8px;
+    margin: 0;
+  }
+
+  .grid-container {
+    margin: 10px 8px;
+    gap: 12px;
+  }
+
+  .thumbnail-title h3, .thumbnail-title h5 {
+    font-size: 12px;
+  }
+
+  .announcement-text {
+    font-size: 13px;
   }
 }
 
