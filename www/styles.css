@@ -203,6 +203,184 @@
     font-size: 16px;
     padding: 0 15px;
   }
+
+  /* Publications page mobile optimization */
+  .publications {
+    margin: 0 15px !important;
+    padding: 15px !important;
+  }
+
+  .publications p {
+    margin-left: 0 !important;
+    width: 100% !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+
+  .publications p[style*="margin-left: 200px"] {
+    margin-left: 0 !important;
+    text-align: center !important;
+    font-size: 18px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .publications p[style*="margin-left: 100px"] {
+    margin-left: 0 !important;
+    text-align: center !important;
+    font-size: 16px !important;
+    width: 100% !important;
+    border-bottom: 2px solid #333 !important;
+    padding-bottom: 10px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .publications p[style*="margin-left: 385px"] {
+    margin-left: 0 !important;
+    width: 100% !important;
+  }
+
+  .pdf-pub-button {
+    width: 90% !important;
+    max-width: 300px !important;
+    margin: 20px auto !important;
+    display: block !important;
+    font-size: 16px !important;
+    padding: 12px 20px !important;
+  }
+
+  /* Software page mobile optimization */
+  .software-grid {
+    grid-template-columns: 1fr !important;
+    margin: 20px 15px !important;
+    gap: 15px !important;
+  }
+
+  .software-accordion {
+    font-size: 16px !important;
+    padding: 15px !important;
+  }
+
+  .sotfware-accordion-panel {
+    padding: 0 15px !important;
+  }
+
+  .sotfware-accordion-panel ul {
+    padding-left: 20px !important;
+  }
+
+  .sotfware-accordion-panel li {
+    margin-bottom: 8px !important;
+  }
+
+  .sotfware-accordion-panel a {
+    font-size: 14px !important;
+    word-break: break-word !important;
+  }
+
+  /* Main paragraph mobile optimization */
+  .main-paragraph {
+    width: 90% !important;
+    margin: 20px auto !important;
+    padding: 0 15px !important;
+    font-size: 16px !important;
+    text-align: center !important;
+  }
+
+  /* Contact page mobile optimization */
+  .contact-container {
+    grid-template-columns: 1fr !important;
+    padding: 1rem !important;
+    gap: 1rem !important;
+  }
+
+  .contact-info {
+    padding: 1.5rem !important;
+  }
+
+  .contact-card {
+    padding: 1rem !important;
+  }
+
+  .contact-card h3 {
+    font-size: 1.2em !important;
+  }
+
+  .contact-card p {
+    font-size: 14px !important;
+  }
+
+  /* Quotes page mobile optimization */
+  .quote-container {
+    flex-direction: column !important;
+    padding: 10px !important;
+    gap: 15px !important;
+  }
+
+  .quote-box, .quote-box-illustrator {
+    max-width: 100% !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  .quote-box-content, .quote-box-support {
+    position: static !important;
+    width: 100% !important;
+    margin: 10px 0 !important;
+  }
+
+  /* Blog page mobile optimization */
+  .blog-row {
+    grid-template-columns: 1fr !important;
+    margin: 20px 15px !important;
+    gap: 15px !important;
+  }
+
+  .blog-post {
+    min-height: auto !important;
+    padding: 15px !important;
+  }
+
+  .blog-thumbnail {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 150px !important;
+  }
+
+  .blog-title {
+    font-size: 16px !important;
+    margin: 15px 0 0 0 !important;
+  }
+
+  /* About page mobile optimization */
+  .about-container {
+    padding: 0 15px !important;
+  }
+
+  .about-section {
+    padding: 25px !important;
+    margin-bottom: 20px !important;
+  }
+
+  .about-section h2 {
+    font-size: 1.6em !important;
+  }
+
+  .about-section p {
+    font-size: 16px !important;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .about-card {
+    padding: 20px !important;
+  }
+
+  .highlight-box {
+    padding: 20px !important;
+  }
 }
 
 /* Styles for screens smaller than 480px (very small mobile devices) */
@@ -280,6 +458,115 @@
     font-size: 14px;
     padding: 0 10px;
   }
+
+  /* Publications page mobile optimization for small screens */
+  .publications {
+    margin: 0 10px !important;
+    padding: 10px !important;
+  }
+
+  .publications p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+
+  .publications p[style*="margin-left: 200px"] {
+    font-size: 16px !important;
+  }
+
+  .publications p[style*="margin-left: 100px"] {
+    font-size: 14px !important;
+  }
+
+  .pdf-pub-button {
+    width: 95% !important;
+    font-size: 14px !important;
+    padding: 10px 16px !important;
+  }
+
+  /* Software page mobile optimization for small screens */
+  .software-grid {
+    margin: 15px 10px !important;
+    gap: 12px !important;
+  }
+
+  .software-accordion {
+    font-size: 14px !important;
+    padding: 12px !important;
+  }
+
+  .sotfware-accordion-panel a {
+    font-size: 13px !important;
+  }
+
+  .main-paragraph {
+    font-size: 14px !important;
+    padding: 0 10px !important;
+  }
+
+  /* Contact page mobile optimization for small screens */
+  .contact-container {
+    padding: 0.8rem !important;
+  }
+
+  .contact-info {
+    padding: 1.2rem !important;
+  }
+
+  .contact-card {
+    padding: 0.8rem !important;
+  }
+
+  .contact-card h3 {
+    font-size: 1.1em !important;
+  }
+
+  .contact-card p {
+    font-size: 13px !important;
+  }
+
+  /* Blog page mobile optimization for small screens */
+  .blog-row {
+    margin: 15px 10px !important;
+    gap: 12px !important;
+  }
+
+  .blog-post {
+    padding: 12px !important;
+  }
+
+  .blog-thumbnail {
+    height: 120px !important;
+  }
+
+  .blog-title {
+    font-size: 15px !important;
+  }
+
+  /* About page mobile optimization for small screens */
+  .about-container {
+    padding: 0 10px !important;
+  }
+
+  .about-section {
+    padding: 20px !important;
+  }
+
+  .about-section h2 {
+    font-size: 1.4em !important;
+  }
+
+  .about-section p {
+    font-size: 15px !important;
+  }
+
+  .about-card {
+    padding: 15px !important;
+  }
+
+  .highlight-box {
+    padding: 15px !important;
+  }
 }
 
 /* Extra small devices */
@@ -329,6 +616,115 @@
 
   .announcement-text {
     font-size: 13px;
+  }
+
+  /* Publications page mobile optimization for extra small screens */
+  .publications {
+    margin: 0 8px !important;
+    padding: 8px !important;
+  }
+
+  .publications p {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
+
+  .publications p[style*="margin-left: 200px"] {
+    font-size: 15px !important;
+  }
+
+  .publications p[style*="margin-left: 100px"] {
+    font-size: 13px !important;
+  }
+
+  .pdf-pub-button {
+    width: 98% !important;
+    font-size: 13px !important;
+    padding: 8px 14px !important;
+  }
+
+  /* Software page mobile optimization for extra small screens */
+  .software-grid {
+    margin: 10px 8px !important;
+    gap: 10px !important;
+  }
+
+  .software-accordion {
+    font-size: 13px !important;
+    padding: 10px !important;
+  }
+
+  .sotfware-accordion-panel a {
+    font-size: 12px !important;
+  }
+
+  .main-paragraph {
+    font-size: 13px !important;
+    padding: 0 8px !important;
+  }
+
+  /* Contact page mobile optimization for extra small screens */
+  .contact-container {
+    padding: 0.6rem !important;
+  }
+
+  .contact-info {
+    padding: 1rem !important;
+  }
+
+  .contact-card {
+    padding: 0.6rem !important;
+  }
+
+  .contact-card h3 {
+    font-size: 1em !important;
+  }
+
+  .contact-card p {
+    font-size: 12px !important;
+  }
+
+  /* Blog page mobile optimization for extra small screens */
+  .blog-row {
+    margin: 10px 8px !important;
+    gap: 10px !important;
+  }
+
+  .blog-post {
+    padding: 10px !important;
+  }
+
+  .blog-thumbnail {
+    height: 100px !important;
+  }
+
+  .blog-title {
+    font-size: 14px !important;
+  }
+
+  /* About page mobile optimization for extra small screens */
+  .about-container {
+    padding: 0 8px !important;
+  }
+
+  .about-section {
+    padding: 15px !important;
+  }
+
+  .about-section h2 {
+    font-size: 1.3em !important;
+  }
+
+  .about-section p {
+    font-size: 14px !important;
+  }
+
+  .about-card {
+    padding: 12px !important;
+  }
+
+  .highlight-box {
+    padding: 12px !important;
   }
 }
 
